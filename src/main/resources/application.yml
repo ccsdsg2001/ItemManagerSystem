@@ -4,6 +4,14 @@ spring:
     url: jdbc:mysql://localhost:3306/jesper?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
+  mail:
+    host: smtp.qq.com
+    username: 2517771727@qq.com
+    password: nhrgqoooweaoeafa
+    default-encoding: UTF-8
+    protocol: smtp
+    port: 465
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:

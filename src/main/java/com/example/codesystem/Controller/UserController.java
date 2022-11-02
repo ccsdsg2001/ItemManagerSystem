@@ -3,12 +3,16 @@ package com.example.codesystem.Controller;
 import com.example.codesystem.model.User;
 import com.example.codesystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * @author cc
@@ -16,6 +20,12 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class UserController {
+
+    @Value("${spring.mail.username}")
+    private String Sender;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Autowired
     UserService userService;
@@ -44,6 +54,58 @@ public class UserController {
             model.addAttribute("error", "用户名错误,请重新输入");
             return "login";
         }
+    }
+
+
+    @GetMapping("/user/register")
+    //注册
+    public String register(Model model){
+        return "register";
+    }
+
+    @PostMapping("/user/register")
+    public String registrPost(User user,Model model){
+        System.out.println("用户名"+user.getUserName());
+
+        try {
+            userService.resgisterNameIsnull(user);
+            model.addAttribute("error", "该用户已经存在!");
+        } catch (Exception e) {
+             Date date = new Date();
+            user.setAddDate(date);
+            user.setUpdateDate(date);
+            userService.register(user);
+            System.out.println("注册成功");
+            model.addAttribute("error","注册成功");
+            return "login";
+        }
+        return "register";
+    }
+
+    // 忘记密码跳转
+    @GetMapping("/user/forget")
+    public String forgetGet(Model model){
+        return "forget";
+    }
+
+    @PostMapping("/user/forget")
+    public String forgetPost(User user,Model model){
+        String password = userService.selectPasswordByname(user);
+        if(password==null){
+            model.addAttribute("error", "账号不存在或邮箱错误!");
+        }else {
+            String email = user.getEmail();
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(Sender);
+            message.setTo(email);//接收者邮箱
+            message.setSubject("密码找回");
+            StringBuilder sb = new StringBuilder();
+            sb.append(user.getUserName()+"用户你好,你的密码是:"+password+"感谢你的使用");
+            message.setText(sb.toString());
+            mailSender.send(message);
+            model.addAttribute("error", "已发送到你的邮箱,请查收!");
+        }
+        return "forget";
     }
 
 

@@ -27,7 +27,7 @@ public interface UserMapper {
     int update(User user);//更改用户
 
     @Select("SELECT 1 from tb_user  where userName = #{userName, jdbcType=VARCHAR}")
-    int insertIsname(User user);//查询用户名是否存在
+    int selectIsname(User user);//查询用户名是否存在
 
     @Select("SELECT password from tb_user  where userName = #{userName, jdbcType=VARCHAR} AND  email = #{email, jdbcType=VARCHAR}")
     String selectPasswordByname(User user);//更改密码通过名字查找

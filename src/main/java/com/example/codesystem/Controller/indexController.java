@@ -14,13 +14,13 @@ public class indexController {
 
 
 
-
-
-
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login(){
-        return "login";
+        return "redirect:/user/login";
     }
+
+
+
     @GetMapping("/dashboard")
     public String dashboard(){
         return "dashboard";

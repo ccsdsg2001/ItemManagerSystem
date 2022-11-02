@@ -22,7 +22,17 @@ public class UseServiceImpl implements UserService {
     }
 
     @Override
+    public int resgisterNameIsnull(User user) {
+        return userMapper.selectIsname(user);
+    }
+
+    @Override
     public int register(User user) {
-        return 0;
+        return userMapper.insert(user);
+    }
+
+    @Override
+    public String selectPasswordByname(User user) {
+        return userMapper.selectPasswordByname(user);
     }
 }

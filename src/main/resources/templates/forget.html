@@ -28,7 +28,7 @@
 			</div>
 			<h3>后台信息管理系统  密码找回</h3>
 			<!--<p>Login in. To see it in action.</p>-->
-			<form class="m-t" role="form" action="forget" method="post">
+			<form class="m-t" role="form" th:action="@{/user/forget}" th:method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="输入注册时的账号" name="userName" required="" />
 				</div>
