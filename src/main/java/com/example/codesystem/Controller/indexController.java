@@ -19,17 +19,17 @@ public class indexController {
         return "redirect:/user/login";
     }
 
-
-
-    @GetMapping("/dashboard")
-    public String dashboard(){
-        return "dashboard";
-    }
-
-    @GetMapping("/re")
-    public String register(){
-        return "register";
-    }
+//
+//
+//    @GetMapping("/dashboard")
+//    public String dashboard(){
+//        return "dashboard";
+//    }
+//
+//    @GetMapping("/re")
+//    public String register(){
+//        return "register";
+//    }
 
 
 }

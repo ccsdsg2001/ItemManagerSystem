@@ -4,6 +4,8 @@ spring:
     url: jdbc:mysql://localhost:3306/jesper?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
+#
+#  忘记密码时侯的邮箱验证
   mail:
     host: smtp.qq.com
     username: 2517771727@qq.com
@@ -11,8 +13,27 @@ spring:
     default-encoding: UTF-8
     protocol: smtp
     port: 465
+  thymeleaf:
+    cache: false
+    suffix: .html
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+  redis:
+    host: localhost
+    port: 6370
+    timeout: 10
+    jedis:
+      pool:
+        max-active: 1000
+        max-idle: 500
+        max-wait: 500
+
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
