@@ -30,9 +30,9 @@
                             <h5>当前月收入(元)</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins" th:text="${stats.mIncome}">--月收入啦啦</h1>
+                            <h1 class="no-margins" >--月收入啦啦</h1>
                             <!--<td th:text="${stats.monthlyIncome}">Onions</td>-->
-                            <div class="stat-percent font-bold text-success" th:text="${stats.incomePer}">月收入环比<i
+                            <div class="stat-percent font-bold text-success" >月收入环比<i
                                     class="fa fa-level-up"></i></div>
                             <small>Monthly income</small>
                         </div>
@@ -45,8 +45,8 @@
                             <h5>当前月订单数</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins" th:text="${stats.mOrderNum}">--月订单数</h1>
-                            <div class="stat-percent font-bold text-info" th:text="${stats.orderNumPer}">20% <i
+                            <h1 class="no-margins" >--月订单数</h1>
+                            <div class="stat-percent font-bold text-info">20% <i
                                     class="fa fa-level-up"></i></div>
                             <small>Monthly orders</small>
                         </div>
@@ -59,7 +59,7 @@
                             <h5>访问量</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins" th:text="${stats.pv}">--访问量</h1>
+                            <h1 class="no-margins" >--访问量</h1>
                             <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
                             <small>New visits</small>
                         </div>
@@ -72,8 +72,8 @@
                             <h5>当前月退单数</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins" th:text="${stats.mOrderRefund}">80,600</h1>
-                            <div class="stat-percent font-bold text-danger" th:text="${stats.mOrderRefundPer}">38%</div>
+                            <h1 class="no-margins" >80,600</h1>
+                            <div class="stat-percent font-bold text-danger" >38%</div>
                             <small>Monthly refund</small>
                         </div>
                     </div>
@@ -98,8 +98,8 @@
                                 <div class="col-lg-9">
                                     <div class="flot-chart">
                                         <div class="flot-chart-content" id="flot-dashboard-chart"></div>
-                                        <input type="hidden" id="data2" th:value="${data2}"/>
-                                        <input type="hidden" id="data3" th:value="${data3}"/>
+                                        <input type="hidden" id="data2" />
+                                        <input type="hidden" id="data3" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
