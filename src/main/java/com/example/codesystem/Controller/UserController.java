@@ -109,4 +109,29 @@ public class UserController {
     }
 
 
+
+
+    @GetMapping("/user/userManage")
+    public String userManagerGet(Model model,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        User user1 = userService.selectByNameAndPwd(user);
+        model.addAttribute("user", user1);
+        return "/user/userManage";
+
+    }
+
+    @PostMapping("/user/userManage")
+    public String userManagerPost(Model model,User user,HttpSession session){
+        Date date = new Date();
+        user.setUpdateDate(date);
+        int i = userService.update(user);
+        session.setAttribute("user", user);
+        return "redirect:userManage";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "redirect:/user/login";
+    }
+
 }

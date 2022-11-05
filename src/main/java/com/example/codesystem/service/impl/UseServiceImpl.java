@@ -35,4 +35,14 @@ public class UseServiceImpl implements UserService {
     public String selectPasswordByname(User user) {
         return userMapper.selectPasswordByname(user);
     }
+
+    @Override
+    public User selectByNameAndPwd(User user) {
+        return userMapper.selectByNameAndPwd(user);
+    }
+
+    @Override
+    public int update(User user) {
+        return userMapper.update(user);
+    }
 }
