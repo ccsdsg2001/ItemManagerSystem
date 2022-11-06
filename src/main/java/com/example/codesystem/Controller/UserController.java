@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 import java.util.Date;
 
 /**
@@ -45,14 +47,15 @@ public class UserController {
     }
 
     @PostMapping("/user/login")
-    public String loginPost(User user, Model model, HttpSession session){
+    public String loginPost(User user, Model model, HttpSession session, String verifyCode){
+        String kaptchaCode = session.getAttribute("verifyCode") + "";
         User user1 = userService.login(user);
-        if(user1!=null){
+        if(user1!=null){// onclick="this.src='/common/kaptcha?d='+new Date()*1"
             session.setAttribute("user", user1);
             return "redirect:dashboard";
-        }else {
+        }else  {
             model.addAttribute("error", "用户名错误,请重新输入");
-            return "login";
+            return "redirect:login";
         }
     }
 
