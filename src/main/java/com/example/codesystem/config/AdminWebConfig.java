@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author cc
  * @date 2022年11月04日 21:44
  */
-@Configuration
+
 public class AdminWebConfig implements WebMvcConfigurer {
 
     @Override
