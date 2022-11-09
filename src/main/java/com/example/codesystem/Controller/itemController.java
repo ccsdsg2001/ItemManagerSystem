@@ -1,5 +1,7 @@
 package com.example.codesystem.Controller;
 
+import com.example.codesystem.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class itemController {
+    @Autowired
+    ItemService itemService;
 
     @RequestMapping("/user/itemManage")
     public String itemManage(){
