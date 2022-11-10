@@ -58,7 +58,7 @@
 		                    	<form action="itemCategoryManage_0_0_0">
 			                        <div class="row">
 		                            	<div class="col-sm-3 m-b-xs">
-		                            		<input name="name" value="" th:value="${itemCategory.name}" placeholder="分类名称" class="form-control" type="text"/>
+		                            		<input name="name" value=""  placeholder="分类名称" class="form-control" type="text"/>
 		                                </div>
 		                                <div class="col-sm-1 m-b-xs">
 		                                    <button id="submitButton" class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>搜索</strong></button>
@@ -67,7 +67,7 @@
 	                            </form>
 	                            <div class="row">
 		                            <div class="col-sm-6 m-b-xs">
-					                    <a th:href="@{itemCategoryEdit}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Refresh inbox"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;新增分类&nbsp;&nbsp;&nbsp;&nbsp;</a>
+					                    <a  class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Refresh inbox"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;新增分类&nbsp;&nbsp;&nbsp;&nbsp;</a>
 					                </div>
 					                <div class="col-sm-6 m-b-xs"></div>
 					            </div>
@@ -98,17 +98,17 @@
 		                                    </tr>
 	                                    </thead>
 	                                    <tbody>
-	                                   		<tr th:each="ic : ${list}">
-										   		<td th:text="${ic.id}">Onions</td>
-										      	<td th:text="${ic.name}">Onions</td>
+<!--	                                   		<tr th:each="ic : ${list}">-->
+<!--										   		<td th:text="${ic.id}">Onions</td>-->
+<!--										      	<td th:text="${ic.name}">Onions</td>-->
 
-										      	<td th:text="${ic.updatedStr}">Onions</td>
-										      	<td>
-										      		<a th:href="@{'itemCategoryEdit?id='+${ic.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>
-										      		&nbsp;&nbsp;&nbsp;&nbsp;
-										      		<a href="#" th:onclick="'javascript:updateState('+${ic.id}+',2);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
-										      	</td>
-											</tr>
+<!--										      	<td th:text="${ic.updatedStr}">Onions</td>-->
+<!--										      	<td>-->
+<!--										      		<a th:href="@{'itemCategoryEdit?id='+${ic.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>-->
+<!--										      		&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--										      		<a href="#" th:onclick="'javascript:updateState('+${ic.id}+',2);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>-->
+<!--										      	</td>-->
+<!--											</tr>-->
 	                                    </tbody>
 	                                    <tfoot>
 			                                <tr>

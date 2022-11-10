@@ -55,13 +55,13 @@
                             <form action="stockManage_0_0_0">
                                 <div class="row">
                                     <div class="col-sm-3 m-b-xs">
-                                        <input id="title" name="title" placeholder="商品标题" class="form-control" type="text" th:value="${item.title}"/>
+                                        <input id="title" name="title" placeholder="商品标题" class="form-control" type="text" />
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
-                                        <input id="minNum" name="minNum" class="form-control" type="text" th:value="${item.minNum}" placeholder="最小库存" />
+                                        <input id="minNum" name="minNum" class="form-control" type="text"  placeholder="最小库存" />
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
-                                        <input id="maxNum" name="maxNum"  class="form-control" type="text" th:value="${item.maxNum}" placeholder="最大库存"/>
+                                        <input id="maxNum" name="maxNum"  class="form-control" type="text"  placeholder="最大库存"/>
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
                                         <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>搜索</strong></button>
@@ -96,18 +96,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="item : ${itemList}">
-                                        <td th:text="${item.id}">Onions</td>
-                                        <td th:text="${item.title}">Onions</td>
-                                        <td class="info" th:if="${50 > item.num}" th:text="${item.num}">Onions</td>
-                                        <td class="danger" th:if="${item.num > 10000}" th:text="${item.num}">Onions</td>
-                                        <td th:if="${10001 > item.num and item.num > 49}" th:text="${item.num}">Onions</td>
-                                        <td th:text="${item.updatedStr}">Onions</td>
-                                        <td>
-                                            <a th:href="@{'itemEdit?id='+${item.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;
-                                        </td>
-                                    </tr>
+<!--                                    <tr th:each="item : ${itemList}">-->
+<!--                                        <td th:text="${item.id}">Onions</td>-->
+<!--                                        <td th:text="${item.title}">Onions</td>-->
+<!--                                        <td class="info" th:if="${50 > item.num}" th:text="${item.num}">Onions</td>-->
+<!--                                        <td class="danger" th:if="${item.num > 10000}" th:text="${item.num}">Onions</td>-->
+<!--                                        <td th:if="${10001 > item.num and item.num > 49}" th:text="${item.num}">Onions</td>-->
+<!--                                        <td th:text="${item.updatedStr}">Onions</td>-->
+<!--                                        <td>-->
+<!--                                            <a th:href="@{'itemEdit?id='+${item.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>-->
+<!--                                            &nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
                                     </tbody>
                                     <tfoot>
                                     <tr>

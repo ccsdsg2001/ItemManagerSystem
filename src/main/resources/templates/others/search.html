@@ -63,20 +63,20 @@
                         <div class="ibox-content">
                             <form id="formTag" action="search" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                 <div class="row">
+<!--                                    <div class="col-sm-3 m-b-xs">-->
+<!--                                        <a id="deliveryName" name="deliveryName" th:if="${delivery.deliverySort == 'A' or delivery.deliverySort == 'F' or delivery.deliverySort == 'K'  or delivery.deliverySort == 'S' or delivery.deliverySort == 'Z'}" class="btn btn-success " th:text="${delivery.deliveryName}">搜索</a>-->
+
+<!--                                        <a id="deliveryName" name="deliveryName"  th:if="${delivery.deliverySort == 'B' or delivery.deliverySort == 'G' or delivery.deliverySort == 'L'  or delivery.deliverySort == 'T'}"  class="btn btn-primary " th:text="${delivery.deliveryName}">搜索</a>-->
+
+<!--                                        <a id="deliveryName" name="deliveryName" th:if="${delivery.deliverySort == 'C' or delivery.deliverySort == 'H' or delivery.deliverySort == 'M'  or delivery.deliverySort == 'U'}"  class="btn btn-info " th:text="${delivery.deliveryName}">搜索</a>-->
+
+<!--                                        <a id="deliveryName" name="deliveryName" th:if="${delivery.deliverySort == 'D' or delivery.deliverySort == 'I' or delivery.deliverySort == 'O'  or delivery.deliverySort == 'X'}"  class="btn btn-warning " th:text="${delivery.deliveryName}">搜索</a>-->
+
+<!--                                        <a id="deliveryName" name="deliveryName"  th:if="${delivery.deliverySort == 'E' or delivery.deliverySort == 'J' or delivery.deliverySort == 'Q'  or delivery.deliverySort == 'Y'}" class="btn btn-danger " th:text="${delivery.deliveryName}">搜索</a>-->
+
+<!--                                    </div>-->
                                     <div class="col-sm-3 m-b-xs">
-                                        <a id="deliveryName" name="deliveryName" th:if="${delivery.deliverySort == 'A' or delivery.deliverySort == 'F' or delivery.deliverySort == 'K'  or delivery.deliverySort == 'S' or delivery.deliverySort == 'Z'}" class="btn btn-success " th:text="${delivery.deliveryName}">搜索</a>
-
-                                        <a id="deliveryName" name="deliveryName"  th:if="${delivery.deliverySort == 'B' or delivery.deliverySort == 'G' or delivery.deliverySort == 'L'  or delivery.deliverySort == 'T'}"  class="btn btn-primary " th:text="${delivery.deliveryName}">搜索</a>
-
-                                        <a id="deliveryName" name="deliveryName" th:if="${delivery.deliverySort == 'C' or delivery.deliverySort == 'H' or delivery.deliverySort == 'M'  or delivery.deliverySort == 'U'}"  class="btn btn-info " th:text="${delivery.deliveryName}">搜索</a>
-
-                                        <a id="deliveryName" name="deliveryName" th:if="${delivery.deliverySort == 'D' or delivery.deliverySort == 'I' or delivery.deliverySort == 'O'  or delivery.deliverySort == 'X'}"  class="btn btn-warning " th:text="${delivery.deliveryName}">搜索</a>
-
-                                        <a id="deliveryName" name="deliveryName"  th:if="${delivery.deliverySort == 'E' or delivery.deliverySort == 'J' or delivery.deliverySort == 'Q'  or delivery.deliverySort == 'Y'}" class="btn btn-danger " th:text="${delivery.deliveryName}">搜索</a>
-
-                                    </div>
-                                    <div class="col-sm-3 m-b-xs">
-                                        <input id="expressNo" name="expressNo" placeholder="运单号" class="form-control" type="text" th:value="${delivery.expressNo}"/>
+                                        <input id="expressNo" name="expressNo" placeholder="运单号" class="form-control" type="text"/>
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
                                         <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>查询快递</strong></button>
@@ -111,17 +111,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="express : ${list}">
-                                        <td class="info" th:if="${express.id == 1}" th:text="${express.id}">Onions</td>
-                                        <td class="info" th:if="${express.id == 1}" th:text="${express.context}">Onions</td>
-                                        <td class="info" th:if="${express.id == 1}" th:text="${express.location}">Onions</td>
-                                        <td class="info" th:if="${express.id == 1}" th:text="${express.time}">Onions</td>
-                                        <td th:if="${express.id != 1}" th:text="${express.id}">Onions</td>
-                                        <td th:if="${express.id != 1}" th:text="${express.context}">Onions</td>
-                                        <td th:if="${express.id != 1}" th:text="${express.location}">Onions</td>
-                                        <td th:if="${express.id != 1}" th:text="${express.time}">Onions</td>
+<!--                                    <tr th:each="express : ${list}">-->
+<!--                                        <td class="info" th:if="${express.id == 1}" th:text="${express.id}">Onions</td>-->
+<!--                                        <td class="info" th:if="${express.id == 1}" th:text="${express.context}">Onions</td>-->
+<!--                                        <td class="info" th:if="${express.id == 1}" th:text="${express.location}">Onions</td>-->
+<!--                                        <td class="info" th:if="${express.id == 1}" th:text="${express.time}">Onions</td>-->
+<!--                                        <td th:if="${express.id != 1}" th:text="${express.id}">Onions</td>-->
+<!--                                        <td th:if="${express.id != 1}" th:text="${express.context}">Onions</td>-->
+<!--                                        <td th:if="${express.id != 1}" th:text="${express.location}">Onions</td>-->
+<!--                                        <td th:if="${express.id != 1}" th:text="${express.time}">Onions</td>-->
 
-                                    </tr>
+<!--                                    </tr>-->
                                     </tbody>
                                     <tfoot>
                                     <tr>

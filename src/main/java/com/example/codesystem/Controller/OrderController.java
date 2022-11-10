@@ -1,6 +1,7 @@
 package com.example.codesystem.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author cc
@@ -8,4 +9,14 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class OrderController {
+    @RequestMapping("/user/orderManage")
+    public String orderManage(){
+        return "order/orderManage";
+    }
+
+    @RequestMapping("/user/orderRefund")
+    public String refund(){
+        return "order/orderRefund";
+
+    }
 }

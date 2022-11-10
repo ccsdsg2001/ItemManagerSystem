@@ -56,7 +56,7 @@
             <form action="deliveryDeleteState">
                 <div class="row">
                     <div class="col-sm-2 m-b-xs">
-                        <a th:href="@{deliveryEdit}" class="btn btn-primary btn-block" ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;新增物流公司&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a  class="btn btn-primary btn-block" ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;新增物流公司&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                     </div>
                     <div class="col-sm-2 m-b-xs">
@@ -86,29 +86,29 @@
                             <div class="table-responsive">
                                 <table class=" table table-hover" data-page-size="10">
 
-                                    <tr th:each="delivery : ${list}">
-                                        <!--btn btn-primary,btn btn-info,btn btn-success,btn btn-warning,btn btn-danger-->
-                                        <a th:if="${delivery.deliverySort == 'A' or delivery.deliverySort == 'F' or delivery.deliverySort == 'K'  or delivery.deliverySort == 'S' or delivery.deliverySort == 'Z'}"
-                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-success "
-                                           th:text="${delivery.deliveryName}">搜索</a>
+<!--                                    <tr th:each="delivery : ${list}">-->
+<!--                                        &lt;!&ndash;btn btn-primary,btn btn-info,btn btn-success,btn btn-warning,btn btn-danger&ndash;&gt;-->
+<!--                                        <a th:if="${delivery.deliverySort == 'A' or delivery.deliverySort == 'F' or delivery.deliverySort == 'K'  or delivery.deliverySort == 'S' or delivery.deliverySort == 'Z'}"-->
+<!--                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-success "-->
+<!--                                           th:text="${delivery.deliveryName}">搜索</a>-->
 
-                                        <a th:if="${delivery.deliverySort == 'B' or delivery.deliverySort == 'G' or delivery.deliverySort == 'L'  or delivery.deliverySort == 'T'}"
-                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-primary "
-                                           th:text="${delivery.deliveryName}">搜索</a>
+<!--                                        <a th:if="${delivery.deliverySort == 'B' or delivery.deliverySort == 'G' or delivery.deliverySort == 'L'  or delivery.deliverySort == 'T'}"-->
+<!--                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-primary "-->
+<!--                                           th:text="${delivery.deliveryName}">搜索</a>-->
 
-                                        <a th:if="${delivery.deliverySort == 'C' or delivery.deliverySort == 'H' or delivery.deliverySort == 'M'  or delivery.deliverySort == 'U'}"
-                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-info "
-                                           th:text="${delivery.deliveryName}">搜索</a>
+<!--                                        <a th:if="${delivery.deliverySort == 'C' or delivery.deliverySort == 'H' or delivery.deliverySort == 'M'  or delivery.deliverySort == 'U'}"-->
+<!--                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-info "-->
+<!--                                           th:text="${delivery.deliveryName}">搜索</a>-->
 
-                                        <a th:if="${delivery.deliverySort == 'D' or delivery.deliverySort == 'I' or delivery.deliverySort == 'O'  or delivery.deliverySort == 'X'}"
-                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-warning "
-                                           th:text="${delivery.deliveryName}">搜索</a>
+<!--                                        <a th:if="${delivery.deliverySort == 'D' or delivery.deliverySort == 'I' or delivery.deliverySort == 'O'  or delivery.deliverySort == 'X'}"-->
+<!--                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-warning "-->
+<!--                                           th:text="${delivery.deliveryName}">搜索</a>-->
 
-                                        <a th:if="${delivery.deliverySort == 'E' or delivery.deliverySort == 'J' or delivery.deliverySort == 'Q'  or delivery.deliverySort == 'Y'}"
-                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-danger "
-                                           th:text="${delivery.deliveryName}">搜索</a>
+<!--                                        <a th:if="${delivery.deliverySort == 'E' or delivery.deliverySort == 'J' or delivery.deliverySort == 'Q'  or delivery.deliverySort == 'Y'}"-->
+<!--                                           th:href="@{'search?id='+${delivery.id}}" class="btn btn-danger "-->
+<!--                                           th:text="${delivery.deliveryName}">搜索</a>-->
 
-                                    </tr>
+<!--                                    </tr>-->
 
                                 </table>
                             </div>

@@ -62,34 +62,34 @@
                                 <div class="row">
                                     <div class="col-sm-2 m-b-xs">
                                         <select name="paymentType" id="paymentType" class="form-control">
-                                            <option value="0" th:selected="${order.paymentType==0}">--请选择支付类型--</option>
-                                            <option value="1" th:selected="${order.paymentType==1}">在线支付</option>
-                                            <option value="2" th:selected="${order.paymentType==2}">货到付款</option>
+                                            <option value="0" >--请选择支付类型--</option>
+                                            <option value="1" >在线支付</option>
+                                            <option value="2" >货到付款</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
                                         <select name="status" id="status" class="form-control">
-                                            <option value="0" th:selected="${order.status==0}">--请选择状态--</option>
-                                            <option value="1" th:selected="${order.status==1}">未付款</option>
-                                            <option value="2" th:selected="${order.status==2}">已付款</option>
-                                            <option value="3" th:selected="${order.status==3}">未发货</option>
-                                            <option value="4" th:selected="${order.status==4}">已发货</option>
-                                            <option value="5" th:selected="${order.status==5}">交易成功</option>
-                                            <option value="6" th:selected="${order.status==6}">交易关闭</option>
+                                            <option value="0">--请选择状态--</option>
+                                            <option value="1">未付款</option>
+                                            <option value="2">已付款</option>
+                                            <option value="3">未发货</option>
+                                            <option value="4">已发货</option>
+                                            <option value="5">交易成功</option>
+                                            <option value="6">交易关闭</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
-                                        <input id="minOrderTimeStr" name="minOrderTimeStr" class="form-control" type="text" th:value="${order.minOrderTimeStr}" placeholder="订单最早时间" />
+                                        <input id="minOrderTimeStr" name="minOrderTimeStr" class="form-control" type="text"  placeholder="订单最早时间" />
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
 
-                                        <input id="maxOrderTimeStr" name="maxOrderTimeStr"  class="form-control" type="text" th:value="${order.maxOrderTimeStr}" placeholder="订单最晚时间"/>
+                                        <input id="maxOrderTimeStr" name="maxOrderTimeStr"  class="form-control" type="text" placeholder="订单最晚时间"/>
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
                                         <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>搜索</strong></button>
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
-                                        <a th:href="@{'download2'}" class="btn btn-primary btn-block" >&nbsp;&nbsp;&nbsp;&nbsp;<strong>导出</strong></a>
+                                        <a  class="btn btn-primary btn-block" >&nbsp;&nbsp;&nbsp;&nbsp;<strong>导出</strong></a>
                                     </div>
                                 </div>
                             </form>
@@ -131,19 +131,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="order : ${orderList}">
-                                        <td th:text="${order.orderId}">Onions</td>
-                                        <td th:text="${order.itemTitle}">Onions</td>
-                                        <td th:text="${order.num}">Onions</td>
-                                        <td th:text="${order.totalFee}">Onions</td>
-                                        <td th:text="${order.statusStr}">Onions</td>
-                                        <td th:text="${order.paymentTypeStr}">Onions</td>
-                                        <td th:text="${order.buyerNick}">Onions</td>
-                                        <td th:text="${order.dateStr1}">Onions</td>
-                                        <td>
-                                            <a th:href="@{'orderDetails?orderId='+${order.orderId}}" title="查看详情">查看详情</a>
-                                        </td>
-                                    </tr>
+<!--                                    <tr th:each="order : ${orderList}">-->
+<!--                                        <td th:text="${order.orderId}">Onions</td>-->
+<!--                                        <td th:text="${order.itemTitle}">Onions</td>-->
+<!--                                        <td th:text="${order.num}">Onions</td>-->
+<!--                                        <td th:text="${order.totalFee}">Onions</td>-->
+<!--                                        <td th:text="${order.statusStr}">Onions</td>-->
+<!--                                        <td th:text="${order.paymentTypeStr}">Onions</td>-->
+<!--                                        <td th:text="${order.buyerNick}">Onions</td>-->
+<!--                                        <td th:text="${order.dateStr1}">Onions</td>-->
+<!--                                        <td>-->
+<!--                                            <a th:href="@{'orderDetails?orderId='+${order.orderId}}" title="查看详情">查看详情</a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
                                     </tbody>
                                     <tfoot>
                                     <tr>
