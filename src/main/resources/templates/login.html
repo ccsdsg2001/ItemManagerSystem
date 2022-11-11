@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <input type="code" class="form-control" placeholder="输入验证码" name="code" required="" />
-                <img alt="点击图片刷新！" class="pointer" src="/code"  onclick="this.src='/code?d='+new Date()*1">
+                <img alt="点击图片刷新！" style="position: relative;" class="pointer" src="/code"  onclick="this.src='/code?d='+new Date()*1">
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">登  录</button>
             <a  th:href="@{forget}"  href="#"><small>忘记密码 ?</small></a>

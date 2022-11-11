@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NutF4n|Page Error</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<style>
+    *{ padding:0; margin:0; box-sizing: border-box;font-family: "微软雅黑"; }
+    body,html{ width:100%; height:100%; }
+
+    .container{ max-width:90%; margin:0 auto; padding:80px 0px; }
+    .bg{ display:block; max-width:100%; margin:0px auto; }
+    .btn{ width:400px; margin:0 auto; max-width:100%; margin-top:40px; }
+    .btn a{ float:left; text-decoration: none; width:46.5%; border:1px solid #5298ff; background:#5298ff; color:#FFF; display:block; height:46px; line-height:44px; text-align:center; font-size:16px; border-radius:3px; overflow: hidden; }
+    .btn .goindex{ margin-right:7%; }
+    .btn .lx{ border: 1px solid #d8d8d8; background: #ffffff; color: #8c8c8c; }
+    @media screen and (max-width: 500px) {
+        .btn{ width:85%; }
+        .btn a{ width:100%; font-size:15px; height:42px; line-height:42px; }
+        .btn .goindex{ margin-right:0; margin-bottom:20px; }
+    }
+</style>
+
+<body class="gray-bg">
+
+
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>404</h1>
+        <h3 class="font-bold">Page Not Found</h3>
+
+        <div class="error-desc">
+            Sorry, but the page you are looking for has note been found. Try checking the URL for error, then hit the refresh button on your browser or try found something else in our app.
+            <form class="form-inline m-t" role="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search for page">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+        <div class="container">
+
+            <div class="btn">
+                <a th:href="@{login}"> 返回首页</a>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
