@@ -5,6 +5,7 @@ import com.example.codesystem.model.User;
 
 public interface UserService {
     User login(User user);//登录
+    int logout(User user);//退出
 
 
     int resgisterNameIsnull(User user);//检查用户名是否存在

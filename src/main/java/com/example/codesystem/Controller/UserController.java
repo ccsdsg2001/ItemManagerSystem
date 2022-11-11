@@ -2,6 +2,7 @@ package com.example.codesystem.Controller;
 
 import com.example.codesystem.model.User;
 import com.example.codesystem.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -39,6 +40,8 @@ public class UserController {
      * @Date 22:04 2022/11/1
  * @param null
  * @return null
+ *
+ *
      **/
 
     @GetMapping("/user/login")
@@ -47,9 +50,14 @@ public class UserController {
     }
 
     @PostMapping("/user/login")
-    public String loginPost(User user, Model model, HttpSession session, String verifyCode){
-        String kaptchaCode = session.getAttribute("verifyCode") + "";
-        User user1 = userService.login(user);
+    public String loginPost(User user, Model model, HttpSession session, String code){
+//        String kaptchaCode = session.getAttribute("verifyCode") + "";
+        String kaptcha = (String) session.getAttribute("verifyCode");
+        if (StringUtils.isBlank(kaptcha) || StringUtils.isBlank(code) || !kaptcha.equalsIgnoreCase(code)) {
+            model.addAttribute("error", "验证码不正确!");
+            return "redirect:login";
+        }
+            User user1 = userService.login(user);
         if(user1!=null){// onclick="this.src='/common/kaptcha?d='+new Date()*1"
             session.setAttribute("user", user1);
             return "redirect:dashboard";
@@ -133,7 +141,10 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public String logout(){
+    public String logout(HttpSession session){
+        if(session.getAttribute("user")!=null){
+            session.removeAttribute("user");
+        }
         return "redirect:/user/login";
     }
 

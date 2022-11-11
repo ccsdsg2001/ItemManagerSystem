@@ -33,4 +33,13 @@ public interface UserMapper {
     String selectPasswordByname(User user);//更改密码通过名字查找
 
 
+    @Select("SELECT status from tb_user where userName = #{userName, jdbcType=VARCHAR}")
+    int selectStatus(User user);//通过查找用户表的状态来检查是否登录
+
+    @Update("update tb_user SET status =1 where userName = #{userName, jdbcType=VARCHAR}")
+    int updateStatusbylogin(User user);
+
+    @Update("update tb_user SET status =1 where userName = #{userName, jdbcType=VARCHAR}")
+    int updateStatusbylogout(User user);
+
 }

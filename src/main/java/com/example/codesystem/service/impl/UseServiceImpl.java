@@ -18,7 +18,13 @@ public class UseServiceImpl implements UserService {
 
     @Override
     public User login(User user) {
+
         return userMapper.selectByNameAndPwd(user);
+    }
+
+    @Override
+    public int logout(User user) {
+        return userMapper.selectStatus(user);
     }
 
     @Override
