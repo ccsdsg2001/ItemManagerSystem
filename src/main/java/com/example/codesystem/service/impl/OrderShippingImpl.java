@@ -3,6 +3,11 @@ package com.example.codesystem.service.impl;
 import com.example.codesystem.mapper.OrderShippingMapper;
 import com.example.codesystem.model.OrderShipping;
 import com.example.codesystem.service.OrderShippingService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +18,7 @@ import java.util.List;
  * @date 2022年11月14日 22:34
  */
 @Service
+@Slf4j
 public class OrderShippingImpl implements OrderShippingService {
 
     @Autowired
@@ -41,5 +47,17 @@ public class OrderShippingImpl implements OrderShippingService {
     @Override
     public int insert(OrderShipping record) {
         return orderShippingMapper.insert(record);
+    }
+
+    @Override
+    public PageInfo<OrderShipping> findAllByPage(Integer pageNum, Integer pageSize) {
+        log.info("pagenum:{}",pageNum);
+        log.info("pagesize:{}",pageNum);
+        Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
+        log.info("page:{}", objects);
+        List<OrderShipping> orderShippings = orderShippingMapper.selectAll();
+        PageInfo<OrderShipping> pageInfo = new PageInfo<>(orderShippings);
+        return pageInfo;
+
     }
 }

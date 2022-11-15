@@ -38,6 +38,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+
+
         <!-- druid -->
         <dependency>
             <groupId>com.alibaba</groupId>

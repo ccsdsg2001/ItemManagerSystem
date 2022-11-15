@@ -37,3 +37,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+pagehelper:
+  reasonable: true
+  support-methods-arguments: true
+  page-size-zero: true
+  helper-dialect: mysql
+

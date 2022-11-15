@@ -30,4 +30,5 @@ public class OrderShipping {
     private Date updated;
 
 
+
 }
