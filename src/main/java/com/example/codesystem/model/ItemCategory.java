@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class itemCategory {
+public class ItemCategory {
     private Integer id;
     private   Integer parentId;
     private String name;

@@ -116,7 +116,7 @@
                                         <td th:text="${orderShipping.createdStr}">Onions</td>
                                         <td th:text="${orderShipping.updatedStr}">Onions</td>
                                         <td>
-                                            <a href="" th:onclick="'javascript:updateState('+${orderShipping.orderId}+',2);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
+                                            <a href="" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
 <!--                                            th:onclick="'javascript:updateState('+${orderShipping.orderId}+',2);'"-->
                                         </td>
                                     </tr>
@@ -142,7 +142,7 @@
                                                 <li class="page-item">
                                                     <a th:if="${pageInfo.pages>1}" class="page-link" th:href="@{/user/shippingManage(pageNum=2)}">2</a>
                                                 </li>
-                                                <li class="page-item"><a th:if="${pageInfo.pages>2}" class="page-link" th:href="@{/shippingManage(pageNum=3)}">3</a></li>
+                                                <li class="page-item"><a th:if="${pageInfo.pages>2}" class="page-link" th:href="@{/user/shippingManage(pageNum=3)}">3</a></li>
                                                 <li class="page-item">
                                                     <a th:if="${!pageInfo.isLastPage}" class="page-link" th:href="@{/user/shippingManage(pageNum=${pageInfo.getNextPage()})}">下一页</a>
                                                     <a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/shippingManage(pageNum=${pageInfo.getNextPage()})}">下一页</a>
