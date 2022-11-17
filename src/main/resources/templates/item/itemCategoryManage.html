@@ -98,23 +98,50 @@
 		                                    </tr>
 	                                    </thead>
 	                                    <tbody>
-<!--	                                   		<tr th:each="ic : ${list}">-->
-<!--										   		<td th:text="${ic.id}">Onions</td>-->
-<!--										      	<td th:text="${ic.name}">Onions</td>-->
+	                                   		<tr th:each="ic : ${pageInfo.list}">
+										   		<td th:text="${ic.id}">Onions</td>
+										      	<td th:text="${ic.name}">Onions</td>
 
-<!--										      	<td th:text="${ic.updatedStr}">Onions</td>-->
-<!--										      	<td>-->
-<!--										      		<a th:href="@{'itemCategoryEdit?id='+${ic.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>-->
-<!--										      		&nbsp;&nbsp;&nbsp;&nbsp;-->
-<!--										      		<a href="#" th:onclick="'javascript:updateState('+${ic.id}+',2);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>-->
-<!--										      	</td>-->
-<!--											</tr>-->
+										      	<td th:text="${ic.updatedStr}">Onions</td>
+										      	<td>
+										      		<a  title="修改"><i class="fa fa-edit text-navy"></i></a>
+										      		&nbsp;&nbsp;&nbsp;&nbsp;
+										      		<a href="#" th:onclick="'javascript:updateState('+${ic.id}+',2);'"  title="删除"><i class="fa fa-trash-o text-navy"></i></a>
+										      	</td>
+											</tr>
 	                                    </tbody>
 	                                    <tfoot>
 			                                <tr>
-			                                    <td colspan="7">
-			                                        <ul id="pageHTML" class="pagination pull-right"></ul>
-			                                    </td>
+												<td colspan="12">
+													<ul class="pagination pull-right" >
+														<!--                                                id="pageHTML" -->
+														<li class="page-item"><a class="page-link"><span>当前页为：</span><span th:text="第+${pageInfo.pageNum}+页"></span></a></li>
+														<!--<li class="page-item"><a class="page-link" th:href="@{/emp/findAll}">首页</a></li>-->
+														<li class="page-item">
+															<a th:if="${!pageInfo.isFirstPage}" class="page-link" th:href="@{/user/itemCategory?pageNum=0}">首页</a>
+															<a th:if="${pageInfo.isFirstPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/itemCategory?pageNum=0}">首页</a>
+														</li>
+														<li class="page-item">
+															<a th:if="${!pageInfo.isFirstPage}" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getPrePage()})}">上一页</a>
+															<a th:if="${pageInfo.isFirstPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getPrePage()})}">上一页</a>
+														</li>
+
+														<li class="page-item"><a class="page-link" th:href="@{/user/itemCategory(pageNum=1)}">1</a></li>
+														<li class="page-item">
+															<a th:if="${pageInfo.pages>1}" class="page-link" th:href="@{/user/itemCategory(pageNum=2)}">2</a>
+														</li>
+														<li class="page-item"><a th:if="${pageInfo.pages>2}" class="page-link" th:href="@{/user/itemCategory(pageNum=3)}">3</a></li>
+														<li class="page-item">
+															<a th:if="${!pageInfo.isLastPage}" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getNextPage()})}">下一页</a>
+															<a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getNextPage()})}">下一页</a>
+														</li>
+														<li class="page-item">
+															<a th:if="${!pageInfo.isLastPage}" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getNavigateLastPage()})}">尾页</a>
+															<a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getNavigateLastPage()})}">尾页</a>
+														</li>
+														<li class="page-item"><a class="page-link"><span th:text="共+${pageInfo.pages}+页"></span></a></li>
+													</ul>
+												</td>
 			                                </tr>
 		                                </tfoot>
 	                                </table>

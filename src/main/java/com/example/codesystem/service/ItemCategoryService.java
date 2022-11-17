@@ -1,6 +1,8 @@
 package com.example.codesystem.service;
 
 import com.example.codesystem.model.ItemCategory;
+import com.example.codesystem.model.OrderShipping;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -11,5 +13,23 @@ import java.util.List;
 
 public interface ItemCategoryService {
 
-    List<ItemCategory> listALL();
+    ItemCategory findById(ItemCategory itemCategory);
+
+    List<ItemCategory> list(ItemCategory itemCategory);
+
+    List<ItemCategory> list1();
+
+    int count(ItemCategory itemCategory);
+
+    int insert(ItemCategory itemCategory);
+
+    int update(ItemCategory itemCategory);
+
+    void delete(ItemCategory itemCategory);
+
+
+
+    int updateStatus(ItemCategory itemCategory);
+
+    PageInfo<ItemCategory> findByPage(Integer pageNum, Integer pageSize);
 }

@@ -116,7 +116,7 @@
                                         <td th:text="${orderShipping.createdStr}">Onions</td>
                                         <td th:text="${orderShipping.updatedStr}">Onions</td>
                                         <td>
-                                            <a href="" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
+                                            <a href="#" th:onclick="javascript:updateState([[${orderShipping.orderId}]]);" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
 <!--                                            th:onclick="'javascript:updateState('+${orderShipping.orderId}+',2);'"-->
                                         </td>
                                     </tr>
@@ -209,10 +209,10 @@
     });
 
     /*<![CDATA[*/
-    function updateState(orderId){
+    function updateState(orderId,state){
         var deleteTag;
-        if(true)
-        {
+        var state = true;
+        if(state){
             deleteTag = confirm("确定删除此条信息?");
         } else {
             deleteTag = true;

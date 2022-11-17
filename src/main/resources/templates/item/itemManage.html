@@ -114,14 +114,12 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr >
-                                        <td >Onions</td>
-                                        <td >Onions</td>
-                                        <td >Onions</td>
-                                        <td >Onions</td>
-                                        <td >Onions</td>
-                                        <td >Onions</td>
-                                     
+                                    <tr th:each="ic : ${pageInfo.list}">
+                                        <td th:text="${ic.id}">Onions</td>
+                                        <td th:text="${ic.name}">Onions</td>
+
+                                        <td th:text="${ic.updatedStr}">Onions</td>
+
                                         <td>
                                             <a  title="修改"><i class="fa fa-edit text-navy"></i></a>
                                             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -131,9 +129,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td colspan="8">
-                                            <ul id="pageHTML" class="pagination pull-right"></ul>
-                                        </td>
+
                                     </tr>
                                     </tfoot>
                                 </table>
