@@ -25,5 +25,7 @@ public interface ItemCategoryMapper {
 
     int updateStatus(ItemCategory itemCategory);
 
+    List<ItemCategory> listByName(String name);
+
 
 }

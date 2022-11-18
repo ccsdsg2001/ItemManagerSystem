@@ -60,6 +60,11 @@ public class ItemCategoryImpl implements ItemCategoryService {
     }
 
     @Override
+    public List<ItemCategory> LISTByNAME(String name) {
+        return itemCategoryMapper.listByName(name);
+    }
+
+    @Override
     public int updateStatus(ItemCategory itemCategory) {
         return 0;
     }

@@ -37,6 +37,10 @@
         </if>
     </select>
 
+    <select id="listByName" resultType="com.example.codesystem.model.ItemCategory">
+        SELECT * From tb_category WHERE NAME=#{NAME, jdbcType=INTEGER}
+    </select>
+
 
     <insert id="insert" parameterType="com.example.codesystem.model.ItemCategory" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_category (id, parent_id, name, status, sort_order, is_parent, created, updated)

@@ -28,6 +28,7 @@ public interface ItemCategoryService {
     void delete(ItemCategory itemCategory);
 
 
+    List<ItemCategory> LISTByNAME(String name);
 
     int updateStatus(ItemCategory itemCategory);
 

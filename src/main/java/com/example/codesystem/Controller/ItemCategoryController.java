@@ -5,10 +5,17 @@ import com.example.codesystem.model.ResObject;
 import com.example.codesystem.service.ItemCategoryService;
 import com.example.codesystem.util.Constant;
 import com.github.pagehelper.PageInfo;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author cc
@@ -20,10 +27,21 @@ public class ItemCategoryController {
     @Autowired
     ItemCategoryService itemCategoryService;
 
+
+
+//    @RequestMapping("/selectByNAME/{name}")
+//    public String name(@PathVariable String name ,Model model){
+//        List<ItemCategory> itemCategories = itemCategoryService.LISTByNAME(name);
+//        model.addAttribute("name", itemCategories);
+//        return "item/itemCategoryManage";
+//    }
+
     @RequestMapping("/user/itemCategory")
     public String itemCategory(ItemCategory itemCategory,@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
-                               @RequestParam(value = "pageSize",required = false,defaultValue = "5")Integer pageSize, Model model){
+                               @RequestParam(value = "pageSize",required = false,defaultValue = "5")Integer pageSize, Model model, String name){
 
+
+//        itemCategoryService.findById(name);
 
         PageInfo<ItemCategory> byPage = itemCategoryService.findByPage(pageNum, pageSize);
         model.addAttribute("pageInfo",byPage);
@@ -37,10 +55,39 @@ public class ItemCategoryController {
 //        return "item/itemCategoryManage";
 //    }
 
-    @PostMapping("/user/itemCategoryEdit")
-    public String itemEdit(){
-        return "";
+    @GetMapping("/user/itemCategoryEdit")
+    public String itemEdit(Model model,ItemCategory itemCategory){
+        if(itemCategory.getId() != 0){
+            ItemCategory itemCategory0 = itemCategoryService.findById(itemCategory);
+            model.addAttribute("itemCategory",itemCategory0);
+        }
+        return "item/itemCategoryEdit";
+
     }
+
+    @PostMapping("/user/itemCategoryEdit")
+    public String newsCategoryEditPost(Model model, ItemCategory itemCategory, @RequestParam MultipartFile[] imageFile, HttpSession httpSession) {
+        //根据时间和随机数生成id
+        Date date = new Date();
+        Random random = new Random();
+        int rannum = (int) (random.nextDouble() * (999 - 100 + 1)) + 10;// 获取3位随机数
+        itemCategory.setCreated(date);
+        itemCategory.setUpdated(date);
+        List<ItemCategory> list = itemCategoryService.list1();
+        String name = itemCategory.getName();
+        for(ItemCategory i : list){
+            if(i.getName().equals(name))
+                return "redirect:itemCategory";
+        }
+        if(itemCategory.getId() != 0){
+            itemCategoryService.update(itemCategory);
+        } else {
+            itemCategory.setId(rannum);
+            itemCategoryService.insert(itemCategory);
+        }
+        return "redirect:itemCategory";
+    }
+
 
 
 

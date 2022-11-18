@@ -52,11 +52,12 @@ public class UserController {
     @PostMapping("/user/login")
     public String loginPost(User user, Model model, HttpSession session, String code){
 //        String kaptchaCode = session.getAttribute("verifyCode") + "";
-        String kaptcha = (String) session.getAttribute("verifyCode");
-        if (StringUtils.isBlank(kaptcha) || StringUtils.isBlank(code) || !kaptcha.equalsIgnoreCase(code)) {
-            model.addAttribute("error", "验证码不正确!");
-            return "redirect:login";
-        }
+        //验证吗模块
+//        String kaptcha = (String) session.getAttribute("verifyCode");
+//        if (StringUtils.isBlank(kaptcha) || StringUtils.isBlank(code) || !kaptcha.equalsIgnoreCase(code)) {
+//            model.addAttribute("error", "验证码不正确!");
+//            return "redirect:login";
+//        }
             User user1 = userService.login(user);
         if(user1!=null){// onclick="this.src='/common/kaptcha?d='+new Date()*1"
             session.setAttribute("user", user1);
