@@ -55,7 +55,8 @@
 		                        </div>
 		                    </div>
 		                    <div class="ibox-content" style="display: block;">
-		                    	<form action="itemCategory">
+
+		                    	<form th:action="@{itemCategory}" th:method="POST">
 			                        <div class="row">
 		                            	<div class="col-sm-3 m-b-xs">
 		                            		<input name="name" value=""  th:value="${itemCategory.name}" placeholder="分类名称" class="form-control" type="text"/>
@@ -65,6 +66,8 @@
 		                                </div>
 		                            </div>
 	                            </form>
+
+
 	                            <div class="row">
 		                            <div class="col-sm-6 m-b-xs">
 					                    <a  th:href="@{itemCategoryEdit}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Refresh inbox"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;新增分类&nbsp;&nbsp;&nbsp;&nbsp;</a>

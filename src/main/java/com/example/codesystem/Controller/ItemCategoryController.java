@@ -4,6 +4,7 @@ import com.example.codesystem.model.ItemCategory;
 import com.example.codesystem.model.ResObject;
 import com.example.codesystem.service.ItemCategoryService;
 import com.example.codesystem.util.Constant;
+import com.example.codesystem.util.PageUtil;
 import com.github.pagehelper.PageInfo;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,13 @@ public class ItemCategoryController {
 
 
 
-//    @RequestMapping("/selectByNAME/{name}")
-//    public String name(@PathVariable String name ,Model model){
-//        List<ItemCategory> itemCategories = itemCategoryService.LISTByNAME(name);
-//        model.addAttribute("name", itemCategories);
-//        return "item/itemCategoryManage";
-//    }
+    @PostMapping ("/user/itemCategory")
+    public String name( ItemCategory itemCategory,String name ,Model model){
+         name = itemCategory.getName();
+        List<ItemCategory> itemCategories = itemCategoryService.LISTByNAME(name);
+        model.addAttribute("pageInfo", itemCategories);
+        return "item/itemCategoryManage";
+    }
 
     @RequestMapping("/user/itemCategory")
     public String itemCategory(ItemCategory itemCategory,@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
@@ -44,6 +46,8 @@ public class ItemCategoryController {
 //        itemCategoryService.findById(name);
 
         PageInfo<ItemCategory> byPage = itemCategoryService.findByPage(pageNum, pageSize);
+
+        PageUtil.getPageContent("itemCategory?name="+itemCategory.getName(),pageNum , pageSize, PageInfo.DEFAULT_NAVIGATE_PAGES);
         model.addAttribute("pageInfo",byPage);
         model.addAttribute("itemCategory", itemCategory);
         return "item/itemCategoryManage";
@@ -66,7 +70,7 @@ public class ItemCategoryController {
     }
 
     @PostMapping("/user/itemCategoryEdit")
-    public String newsCategoryEditPost(Model model, ItemCategory itemCategory, @RequestParam MultipartFile[] imageFile, HttpSession httpSession) {
+    public String newsCategoryEditPost(Model model, ItemCategory itemCategory, HttpSession httpSession) {
         //根据时间和随机数生成id
         Date date = new Date();
         Random random = new Random();
