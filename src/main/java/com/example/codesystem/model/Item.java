@@ -12,10 +12,7 @@ import java.util.Date;
  * @date 2022年10月30日 20:54
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
-public class Item {
+public class Item extends BaseObject{
     private int id;
     private String title;
     private String sellPoint;

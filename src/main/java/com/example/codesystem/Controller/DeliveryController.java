@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -41,6 +42,12 @@ public class DeliveryController {
     @GetMapping("user/deliveryEdit")
     public String deliveryEditGet(Model model, Delivery delivery){
         return "others/deliveryEdit";
+    }
+
+    @PostMapping("user/deliveryEdit")
+    public String deli(Model model,Delivery delivery){
+        deliveryService.insert(delivery);
+        return "redirect:deliveryManage";
     }
 
 

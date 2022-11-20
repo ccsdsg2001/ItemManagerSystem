@@ -114,7 +114,10 @@
 											</tr>
 	                                    </tbody>
 	                                    <tfoot>
+
 			                                <tr>
+
+
 												<td colspan="12">
 													<ul class="pagination pull-right" >
 														<!--                                                id="pageHTML" -->
@@ -139,12 +142,15 @@
 															<a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getNextPage()})}">下一页</a>
 														</li>
 														<li class="page-item">
-															<a th:if="${!pageInfo.isLastPage}" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getNavigateLastPage()})}">尾页</a>
-															<a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.getNavigateLastPage()})}">尾页</a>
+															<a th:if="${!pageInfo.isLastPage}" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.pages})}">尾页</a>
+															<a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/itemCategory(pageNum=${pageInfo.pages})}">尾页</a>
 														</li>
 														<li class="page-item"><a class="page-link"><span th:text="共+${pageInfo.pages}+页"></span></a></li>
 													</ul>
 												</td>
+
+
+
 			                                </tr>
 		                                </tfoot>
 	                                </table>
