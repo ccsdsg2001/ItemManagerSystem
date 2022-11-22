@@ -67,23 +67,57 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<!--                                    <tr th:each="reItem : ${reItemList}">-->
-<!--                                        <td th:text="${reItem.id}">Onions</td>-->
-<!--                                        <td th:text="${reItem.title}">Onions</td>-->
-<!--                                        <td th:text="${reItem.price}">Onions</td>-->
-<!--                                        <td th:text="${reItem.recoveredStr}">Onions</td>-->
-<!--                                     -->
-<!--                                        <td>-->
-<!--                                            <a href="#" th:onclick="'javascript:updateState('+${reItem.id}+',2,0);'" title="恢复">恢复</a>-->
-<!--                                            <a href="#" style="margin-left:20px" th:onclick="'javascript:updateState('+${reItem.id}+',1,0);'" title="彻底删除">彻底删除</a>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
+                                    <tr th:each="reItem : ${pageInfo.list}">
+                                        <td th:text="${reItem.id}">Onions</td>
+                                        <td th:text="${reItem.title}">Onions</td>
+                                        <td th:text="${reItem.price}">Onions</td>
+                                        <td th:text="${reItem.recoveredStr}">Onions</td>
+
+                                        <td>
+                                            <a href="#"  title="恢复">恢复</a>
+<!--                                            th:onclick="'javascript:updateState('+${reItem.id}+',2,0);'"-->
+                                            <a href="#" style="margin-left:20px" title="彻底删除">彻底删除</a>
+<!--                                            th:onclick="'javascript:updateState('+${reItem.id}+',1,0);'" -->
+                                        </td>
+                                    </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td colspan="7">
-                                            <ul id="pageHTML" class="pagination pull-right"></ul>
+
+
+
+                                        <td colspan="12">
+                                            <ul class="pagination pull-right" >
+                                                <!--                                                id="pageHTML" -->
+                                                <li class="page-item"><a class="page-link"><span>当前页为：</span><span th:text="第+${pageInfo.pageNum}+页"></span></a></li>
+                                                <!--<li class="page-item"><a class="page-link" th:href="@{/emp/findAll}">首页</a></li>-->
+                                                <li class="page-item">
+                                                    <a th:if="${!pageInfo.isFirstPage}" class="page-link" th:href="@{/user/recoverManage?pageNum=0}">首页</a>
+                                                    <a th:if="${pageInfo.isFirstPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/recoverManage?pageNum=0}">首页</a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a th:if="${!pageInfo.isFirstPage}" class="page-link" th:href="@{/user/recoverManage(pageNum=${pageInfo.getPrePage()})}">上一页</a>
+                                                    <a th:if="${pageInfo.isFirstPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/recoverManage(pageNum=${pageInfo.getPrePage()})}">上一页</a>
+                                                </li>
+
+                                                <li class="page-item"><a class="page-link" th:href="@{/user/recoverManage(pageNum=1)}">1</a></li>
+                                                <li class="page-item">
+                                                    <a th:if="${pageInfo.pages>1}" class="page-link" th:href="@{/user/recoverManage(pageNum=2)}">2</a>
+                                                </li>
+                                                <li class="page-item"><a th:if="${pageInfo.pages>2}" class="page-link" th:href="@{/user/recoverManage(pageNum=3)}">3</a></li>
+                                                <li class="page-item">
+                                                    <a th:if="${!pageInfo.isLastPage}" class="page-link" th:href="@{/user/recoverManage(pageNum=${pageInfo.getNextPage()})}">下一页</a>
+                                                    <a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/recoverManage(pageNum=${pageInfo.getNextPage()})}">下一页</a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a th:if="${!pageInfo.isLastPage}" class="page-link" th:href="@{/user/recoverManage(pageNum=${pageInfo.pages})}">尾页</a>
+                                                    <a th:if="${pageInfo.isLastPage}" style="pointer-events: none;cursor: default;color:gray;" class="page-link" th:href="@{/user/recoverManage(pageNum=${pageInfo.pages})}">尾页</a>
+                                                </li>
+                                                <li class="page-item"><a class="page-link"><span th:text="共+${pageInfo.pages}+页"></span></a></li>
+                                            </ul>
                                         </td>
+
+
                                     </tr>
                                     </tfoot>
                                 </table>

@@ -1,8 +1,7 @@
 package com.example.codesystem.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.Date;
 
@@ -11,9 +10,9 @@ import java.util.Date;
  * @date 2022年10月30日 20:43
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Order {
+@Getter
+@Setter
+public class Order   extends BaseObject{
     private String orderId;
     private String itemId;
     private String payment;

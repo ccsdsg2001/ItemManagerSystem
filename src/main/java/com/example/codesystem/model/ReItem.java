@@ -9,15 +9,17 @@ import java.util.Date;
  * @date 2022年10月30日 20:52
  */
 @Data
-public class ReItem {
-    private Integer id;
+public class ReItem extends BaseObject{
+    private int id;
     private String title;
     private String sellPoint;
-    private Integer price;
-    private Integer num;
-    private Integer barcode;
+    private int price;
+    private int num;
+    private String barcode;
     private String image;
-    private Integer cid;
-    private Integer status;
+    private int cid;
+    private int status;
     private Date recovered;
+    private String recoveredStr;
 }
+
