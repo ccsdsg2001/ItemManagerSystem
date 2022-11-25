@@ -30,6 +30,11 @@ spring:
         max-active: 1000
         max-idle: 500
         max-wait: 500
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/springboot-db
+
+
 
 
 mybatis:

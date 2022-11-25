@@ -123,9 +123,9 @@
                                         <td th:text="${item.updatedStr}">Onions</td>
 
                                         <td>
-                                            <a  title="修改"><i class="fa fa-edit text-navy"></i></a>
+                                            <a  th:href="@{'itemEdit?id='+${item.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>
 <!--                                            th:href="@{'itemEdit?id='+${item.id}}"-->
-                                            <a href="#"  title="删除"><i class="fa fa-trash-o text-navy"></i></a>
+                                            <a href="#"  th:onclick="'javascript:updateState('+${item.id}+',2,0);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
 <!--                                            th:onclick="'javascript:updateState('+${item.id}+',2,0);'"-->
                                         </td>
                                     </tr>
