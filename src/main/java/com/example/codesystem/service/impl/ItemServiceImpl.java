@@ -76,6 +76,21 @@ public class ItemServiceImpl implements ItemService {
         Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
         log.info("page:{}", objects);
         List<Item> list = itemMapper.selectAll();
+
+        PageInfo<Item> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+
+    }
+
+
+    @Override
+    public PageInfo<Item> findByPagetest(Integer pageNum, Integer pageSize,Item item) {
+        log.info("pagenum:{}",pageNum);
+        log.info("pagesize:{}",pageNum);
+        Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
+        log.info("page:{}", objects);
+        List<Item> list = itemMapper.list(item);
+
         PageInfo<Item> pageInfo = new PageInfo<>(list);
         return pageInfo;
 

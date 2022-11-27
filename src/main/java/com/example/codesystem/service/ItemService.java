@@ -29,4 +29,6 @@ public interface ItemService {
 
 
     PageInfo<Item> findByPage(Integer pageNum, Integer pageSize);
+
+    PageInfo<Item> findByPagetest(Integer pageNum, Integer pageSize, Item item);
 }

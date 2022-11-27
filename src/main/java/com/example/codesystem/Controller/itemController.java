@@ -71,12 +71,27 @@ public class itemController {
 
 
         itemList=itemService.list(item);
-        List<ItemCategory> itemCategoryList = itemCategoryService.list(itemCategory);
+        for (Item i : itemList) {
+            i.setUpdatedStr(DateUtil.getDateStr(i.getUpdated()));
+        }
+        List<ItemCategory> itemCategoryList = itemCategoryService.list1();
 
         PageInfo<Item> byPage = itemService.findByPage(pageNum, pageSize);
+//        List<Item> list = byPage.getList();
+//        for (Item i : list) {
+//            i.setUpdatedStr(DateUtil.getDateStr(i.getUpdated()));
+//        }
+
+        PageInfo<Item> byPagetest = itemService.findByPagetest(pageNum, pageSize, item);
+        List<Item> list = byPagetest.getList();
+        for (Item i : list) {
+            i.setUpdatedStr(DateUtil.getDateStr(i.getUpdated()));
+        }
+
         model.addAttribute("pageInfo",byPage);
         model.addAttribute("item", item);
-        model.addAttribute("itemList", itemList);
+//        model.addAttribute("pageInfo", itemList);
+        model.addAttribute("itemCategoryList", itemCategoryList);
 
         return "item/itemManage";
     }
