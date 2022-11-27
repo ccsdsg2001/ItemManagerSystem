@@ -1,10 +1,14 @@
 package com.example.codesystem.util;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClientFactory;
-import com.mongodb.client.gridfs.model.GridFSFile;
+
+
 import com.mongodb.*;
+import com.mongodb.client.internal.MongoClientImpl;
+import com.mongodb.gridfs.GridFS;
+import com.mongodb.gridfs.GridFSDBFile;
+import com.mongodb.gridfs.GridFSFile;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import java.io.File;
 import java.util.HashMap;
@@ -18,11 +22,11 @@ import java.util.Map;
  */
 public class MongoUtil {
 
-    String dbName = "jesper";
-    String collectionName = "myimage";
+     String dbName = "jesper";
+     String collectionName = "myimage";
 
-    private static class MongoConnectionHolder {
-        new Mongoclent
+    private static   class MongoConnectionHolder {
+        public static Mongo mongo = new MongoClient("127.0.0.1", 27017);
     }
 
     /**
@@ -30,9 +34,11 @@ public class MongoUtil {
      * @MethodName    : getMongo
      * @Description    : 获取数据连接
      */
-    private Mongo getMongo() {
+    private  Mongo getMongo() {
         return MongoConnectionHolder.mongo;
     }
+
+
 
     /**
      * @param file                                                                     ：文件，File类型

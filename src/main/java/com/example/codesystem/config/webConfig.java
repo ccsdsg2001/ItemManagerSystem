@@ -8,6 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @date 2022年11月03日 22:03
  */
 @Configuration
-public class webConfig implements WebMvcConfigurer {
+public class webConfig  {
 
 }

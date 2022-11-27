@@ -61,19 +61,18 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-
                             <form id="formTag" action="itemEdit" method="POST" class="form-horizontal" enctype="multipart/form-data">
 
                                 <div class="form-group"><label class="col-sm-2 control-label">商品id：</label>
                                     <div class="col-sm-10">
-                                        <input id="id" name="id" readonly="readonly" type="text" class="form-control" />
+                                        <input id="id" name="id" readonly="readonly" type="text" class="form-control" th:value="${item.id}"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">标题：</label>
                                     <div class="col-sm-10">
-                                        <input id="title" name="title" type="text" class="form-control"/>
+                                        <input id="title" name="title" type="text" class="form-control" th:value="${item.title}"/>
                                     </div>
                                 </div>
 
@@ -83,7 +82,7 @@
                                     <div class="col-sm-10">
                                         <select name="cid" id="cid" class="form-control" >
                                             <option value="0">--请选择商品分类--</option>
-                                            <option >分类</option>
+                                            <option th:each="ic : ${itemCategoryList}" th:value="${ic.id}" th:text="${ic.name}" th:selected="${item.cid==ic.id}">分类</option>
                                         </select>
                                     </div>
                                 </div>
@@ -92,7 +91,7 @@
 
                                 <div id="imageCell" class="form-group"><label class="col-sm-2 control-label">图片：</label>
                                     <div class="col-sm-10">
-                                        <img   height="250px" width="200px" />
+                                        <img  th:src="@{'/'+${item.image}}" height="250px" width="200px" />
                                         <button id="imageCellBut" type="button" class="btn btn-white btn-sm">&nbsp;&nbsp;&nbsp;&nbsp;修改&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                     </div>
                                 </div>
@@ -107,7 +106,7 @@
 
                                 <div class="form-group"><label class="col-sm-2 control-label">卖点：</label>
                                     <div class="col-sm-10">
-                                        <textarea id="sellPoint" name="sellPoint" class="form-control" rows="2" ></textarea>
+                                        <textarea id="sellPoint" name="sellPoint" class="form-control" rows="2" th:text="${item.sellPoint}"></textarea>
                                     </div>
                                 </div>
 
@@ -115,7 +114,7 @@
 
                                 <div class="form-group"><label class="col-sm-2 control-label">价格：</label>
                                     <div class="col-sm-10">
-                                        <input id="price" name="price" type="text" class="form-control"/>
+                                        <input id="price" name="price" type="text" class="form-control" th:value="${item.price}"/>
                                     </div>
                                 </div>
 
@@ -123,7 +122,7 @@
 
                                 <div class="form-group"><label class="col-sm-2 control-label">库存：</label>
                                     <div class="col-sm-10">
-                                        <input id="num" name="num" type="text" class="form-control" />
+                                        <input id="num" name="num" type="text" class="form-control" th:value="${item.num}"/>
                                     </div>
                                 </div>
 
@@ -134,9 +133,6 @@
                                     </div>
                                 </div>
                             </form>
-
-
-
                         </div>
                     </div>
                 </div>

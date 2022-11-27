@@ -43,6 +43,11 @@ public class ItemServiceImpl implements ItemService {
         return itemMapper.listS(item);
     }
 
+    @Override
+    public int count(Item item) {
+        return itemMapper.count(item);
+    }
+
 //    @Override
 //    public int count(Item item) {
 //        return itemMapper.count(item);

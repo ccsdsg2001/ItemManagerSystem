@@ -18,7 +18,7 @@ public interface ItemService {
 
     List<Item> listS(Item item);
 
-//    int count(Item item);
+    int count(Item item);
 
     int insert(Item item);
 
