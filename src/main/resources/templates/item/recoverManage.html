@@ -74,9 +74,9 @@
                                         <td th:text="${reItem.recoveredStr}">Onions</td>
 
                                         <td>
-                                            <a href="#"  title="恢复">恢复</a>
+                                            <a  th:onclick="'javascript:updateState('+${reItem.id}+',2,0);'" href="#"  title="恢复">恢复</a>
 <!--                                            th:onclick="'javascript:updateState('+${reItem.id}+',2,0);'"-->
-                                            <a href="#" style="margin-left:20px" title="彻底删除">彻底删除</a>
+                                            <a th:onclick="'javascript:updateState('+${reItem.id}+',1,0);'" href="#" style="margin-left:20px" title="彻底删除">彻底删除</a>
 <!--                                            th:onclick="'javascript:updateState('+${reItem.id}+',1,0);'" -->
                                         </td>
                                     </tr>

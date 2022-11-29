@@ -106,7 +106,7 @@
                                         <td th:if="${10001 > item.num and item.num > 49}" th:text="${item.num}">Onions</td>
                                         <td th:text="${item.updated}">Onions</td>
                                         <td>
-                                            <a  title="修改"><i class="fa fa-edit text-navy"></i></a>
+                                            <a th:href="@{'itemEdit?id='+${item.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>
 <!--                                            th:href="@{'itemEdit?id='+${item.id}}"-->
 
                                         </td>

@@ -27,4 +27,6 @@ public class StockController {
         model.addAttribute("pageInfo", itemList);
         return "item/stockManage";
     }
+
+
 }

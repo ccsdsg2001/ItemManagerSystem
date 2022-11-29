@@ -9,6 +9,8 @@ import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
+@EnableTransactionManagement
 public class ItemCategoryImpl implements ItemCategoryService {
 
     @Autowired
@@ -72,6 +75,7 @@ public class ItemCategoryImpl implements ItemCategoryService {
 
 
     @Override
+    @Transactional
     public PageInfo<ItemCategory> findByPage(Integer pageNum, Integer pageSize) {
         log.info("pagenum:{}",pageNum);
         log.info("pagesize:{}",pageNum);
