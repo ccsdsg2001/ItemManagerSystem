@@ -4,6 +4,7 @@ import com.example.codesystem.model.ItemCategory;
 import com.example.codesystem.model.ResObject;
 import com.example.codesystem.service.ItemCategoryService;
 import com.example.codesystem.util.Constant;
+import com.example.codesystem.util.DateUtil;
 import com.example.codesystem.util.PageUtil;
 import com.github.pagehelper.PageInfo;
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -34,6 +35,9 @@ public class ItemCategoryController {
     public String name( ItemCategory itemCategory,String name ,Model model){
          name = itemCategory.getName();
         List<ItemCategory> itemCategories = itemCategoryService.LISTByNAME(name);
+        for (ItemCategory i : itemCategories){
+            i.setCreatedStr(DateUtil.getDateStr(i.getCreated()));
+        }
         model.addAttribute("pageInfo", itemCategories);
         return "item/itemCategoryManage";
     }
@@ -46,6 +50,9 @@ public class ItemCategoryController {
 //        itemCategoryService.findById(name);
 
         PageInfo<ItemCategory> byPage = itemCategoryService.findByPage(pageNum, pageSize);
+        for (ItemCategory i : byPage.getList()){
+            i.setCreatedStr(DateUtil.getDateStr(i.getCreated()));
+        }
 
         PageUtil.getPageContent("itemCategory?name="+itemCategory.getName(),pageNum , pageSize, PageInfo.DEFAULT_NAVIGATE_PAGES);
         model.addAttribute("pageInfo",byPage);

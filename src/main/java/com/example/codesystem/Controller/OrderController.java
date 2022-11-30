@@ -85,6 +85,9 @@ public class OrderController {
         return "order/orderManage";
     }
 
+
+
+
     @RequestMapping("/user/orderRefund")
     public String refund(@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
                          @RequestParam(value = "pageSize",required = false,defaultValue = "20")Integer pageSize, Model model,
@@ -103,9 +106,14 @@ public class OrderController {
                 order1.setNum(orderItem.getNum());
                 order1.setStatusStr(getStatusStrById(order1.getStatus()));
                 order1.setDateStr1(DateUtil.getDateStr(order1.getCreateTime()));
+                order1.setPaymentTypeStr(getRefundStatusStr(order1.getPaymentType()));
+
                 order1.setPaymentTypeStr(getPaymentTypeById(order1.getPaymentType()));
+                order1.setRefundStatusStr(getRefundStatusStr(order1.getRefundStatus()));
             }
         }//遍历数据
+
+        model.addAttribute("orderList", orderList);
         model.addAttribute("pageInfo",byPagebyrefund);
         model.addAttribute("order", order);
         return "order/orderRefund";
