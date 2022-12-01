@@ -61,13 +61,13 @@
                         <div class="ibox-content" style="display: block;">
 
 
-                            <form  th:action="@{shippingManage}" >
+                            <form   th:action="@{shippingManage1}"  >
                                 <div class="row">
                                     <div class="col-sm-3 m-b-xs">
-                                        <input name="name" value=""  placeholder="请输入你要查询的收货人名字或者订单ID" class="form-control" type="text"/>
+                                        <input onkeyup="this.value=this.value.replace(/[, ]/g,'')" name="name" value=""  placeholder="请输入你要查询的收货人名字" class="form-control" type="text"/>
                                     </div>
                                     <div class="col-sm-1 m-b-xs">
-                                        <button id="submitButton" class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>搜索</strong></button>
+                                        <button   id="submitButton" class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>搜索</strong></button>
                                     </div>
                                 </div>
                             </form>

@@ -55,6 +55,11 @@
                receiver_city, receiver_district, receiver_address, receiver_zip, created, updated
         from tb_order_shipping
     </select>
+    <select id="searchByName" resultType="com.example.codesystem.model.OrderShipping">
+        select order_id, receiver_name, receiver_phone, receiver_mobile, receiver_state,
+               receiver_city, receiver_district, receiver_address, receiver_zip, created, updated
+        from tb_order_shipping WHERE receiver_name = #{receiverName,jdbcType=VARCHAR}
+    </select>
 
 
 </mapper>

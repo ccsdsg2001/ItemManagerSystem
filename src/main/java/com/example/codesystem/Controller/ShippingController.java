@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,12 +26,17 @@ public class ShippingController {
     OrderShippingService orderShippingService;
 
 
-    @PostMapping("/user/shippingManage?name=")
+    @RequestMapping("/user/shippingManage1")
     public String shippingsearchbyname(@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
                                        @RequestParam(value = "pageSize",required = false,defaultValue = "5")Integer pageSize,
-                                       Model model, @PathVariable("name") String orderId , Order order){
-        OrderShipping orderShipping = orderShippingService.selectByPrimaryKey(order.getOrderId());
-        model.addAttribute("pageInfo",orderShipping);
+                                       Model model, String name , OrderShipping orderShipping){
+
+        PageInfo<OrderShipping> pageInfo = orderShippingService.searchByname(pageNum, pageSize, name);
+//        if(pageInfo!=null){
+//          pageInfo = orderShippingService.findAllByPage(pageNum, pageSize);
+//        }
+
+        model.addAttribute("pageInfo",pageInfo);
 
 
 

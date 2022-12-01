@@ -1,5 +1,6 @@
 package com.example.codesystem.service;
 
+import com.example.codesystem.model.Order;
 import com.example.codesystem.model.OrderShipping;
 import com.github.pagehelper.PageInfo;
 
@@ -13,5 +14,9 @@ public interface OrderShippingService {
     OrderShipping selectByPrimaryKey(String orderId);
     int insert(OrderShipping record);
 
+    List<OrderShipping> searchByname(String name);
+
     PageInfo<OrderShipping> findAllByPage(Integer pageNum, Integer pageSize);
+    PageInfo<OrderShipping> searchByname(Integer pageNum, Integer pageSize,String name);
+
 }

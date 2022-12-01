@@ -1,6 +1,7 @@
 package com.example.codesystem.service.impl;
 
 import com.example.codesystem.mapper.OrderShippingMapper;
+import com.example.codesystem.model.Order;
 import com.example.codesystem.model.OrderShipping;
 import com.example.codesystem.service.OrderShippingService;
 import com.github.pagehelper.Page;
@@ -50,6 +51,12 @@ public class OrderShippingImpl implements OrderShippingService {
     }
 
     @Override
+    public List<OrderShipping> searchByname(String name) {
+        return orderShippingMapper.searchByName(name);
+    }
+
+
+    @Override
     public PageInfo<OrderShipping> findAllByPage(Integer pageNum, Integer pageSize) {
         log.info("pagenum:{}",pageNum);
         log.info("pagesize:{}",pageNum);
@@ -59,5 +66,16 @@ public class OrderShippingImpl implements OrderShippingService {
         PageInfo<OrderShipping> pageInfo = new PageInfo<>(orderShippings);
         return pageInfo;
 
+    }
+
+    @Override
+    public PageInfo<OrderShipping> searchByname(Integer pageNum, Integer pageSize, String name) {
+        log.info("pagenum:{}",pageNum);
+        log.info("pagesize:{}",pageNum);
+        Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
+        log.info("page:{}", objects);
+        List<OrderShipping> orderShippings = orderShippingMapper.searchByName(name);
+        PageInfo<OrderShipping> pageInfo = new PageInfo<>(orderShippings);
+        return pageInfo;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.codesystem.mapper;
 
+import com.example.codesystem.model.Order;
 import com.example.codesystem.model.OrderShipping;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
@@ -71,6 +72,8 @@ public interface OrderShippingMapper {
 //            "      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})")
     int insert(OrderShipping record);
 
+
+    List<OrderShipping> searchByName(String name);
 
 
 }
