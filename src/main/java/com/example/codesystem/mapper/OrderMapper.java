@@ -2,6 +2,7 @@ package com.example.codesystem.mapper;
 
 import com.example.codesystem.model.Order;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ public interface OrderMapper {
     List<Order> listRefund(Order order);
 
     List<Order> selectAll();
+
+    List<Order> searchByRefundStatusStr(@Param("refundStatusStr") String refundStatusStr);
 
     Integer selectCurOrderNum();
     Integer selectLastOrderNum();

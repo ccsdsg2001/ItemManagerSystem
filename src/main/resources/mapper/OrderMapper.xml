@@ -23,6 +23,7 @@
             <result column="buyer_nick" jdbcType="VARCHAR" property="buyerNick"/>
             <result column="buyer_rate" jdbcType="INTEGER" property="buyerRate"/>
             <result column="refundStatus" jdbcType="INTEGER" property="refundStatus"/>
+            <result column="refundStatusStr" jdbcType="INTEGER" property="refundStatusStr"/>
             <result column="refundReason" jdbcType="VARCHAR" property="refundReason"/>
             <result column="isRefund" jdbcType="INTEGER" property="isRefund"/>
         </resultMap>
@@ -59,7 +60,7 @@
         <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
             select order_id, payment, payment_type, post_fee, status, create_time, update_time,
                    payment_time, consign_time, end_time, close_time, shipping_name, shipping_code, user_id,
-                   buyer_message, buyer_nick, buyer_rate
+                   buyer_message, buyer_nick, buyer_rate,refundReason,refundStatusStr
             from tb_order
         </select>
 
@@ -137,8 +138,15 @@
             SELECT sum(payment) FROM tb_order
             WHERE create_time BETWEEN  #{createTime, jdbcType=DATE} AND  date_add(#{createTime, jdbcType=DATE}, interval 1 day)
         </select>
+    <select id="searchByRefundStatusStr" resultType="com.example.codesystem.model.Order">
+        select order_id, payment, payment_type, post_fee, status, create_time, update_time,
+               payment_time, consign_time, end_time, close_time, shipping_name, shipping_code, user_id,
+               buyer_message, buyer_nick, buyer_rate,refundReason,refundStatusStr
+        from tb_order
+        WHERE refundStatusStr = #{refundStatusStr,jdbcType=INTEGER}
+    </select>
 
-        <resultMap id="monthMap" type="com.example.codesystem.model.Month">
+    <resultMap id="monthMap" type="com.example.codesystem.model.Month">
 
             <result column="一月份" jdbcType="INTEGER" property="Jan"/>
             <result column="二月份" jdbcType="INTEGER" property="Feb"/>

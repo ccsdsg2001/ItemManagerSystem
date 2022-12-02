@@ -154,6 +154,17 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
+    @Override
+    public PageInfo<Order> searchByrefundStatusStr(Integer pageNum, Integer pageSize, String refundStatusStr) {
+        log.info("pagenum:{}",pageNum);
+        log.info("pagesize:{}",pageNum);
+        Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
+        log.info("page:{}", objects);
+        List<Order> orderList = orderMapper.searchByRefundStatusStr(refundStatusStr);
+        PageInfo<Order> pageInfo = new PageInfo<>(orderList);
+        return pageInfo;
+    }
+
 
     public String getPaymentTypeById(int i) {
         switch (i) {

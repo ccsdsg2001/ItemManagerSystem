@@ -109,7 +109,7 @@ public class OrderController {
                 order1.setPaymentTypeStr(getRefundStatusStr(order1.getPaymentType()));
 
                 order1.setPaymentTypeStr(getPaymentTypeById(order1.getPaymentType()));
-                order1.setRefundStatusStr(getRefundStatusStr(order1.getRefundStatus()));
+//                order1.setRefundStatusStr(getRefundStatusStr(order1.getRefundStatus()));
             }
         }//遍历数据
 
@@ -142,6 +142,38 @@ public class OrderController {
             model.addAttribute("order", order1);
         }
         return "order/orderDetails";
+    }
+
+
+    @RequestMapping("/user/searchByrefundStatusStr")
+    public String searchByRefundStatus(@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                                       @RequestParam(value = "pageSize",required = false,defaultValue = "5")Integer pageSize, Model model,
+                                       String name, Item item, Order order ,String refundStatusStr ){
+
+        PageInfo<Order> orderPageInfo = orderService.searchByrefundStatusStr(pageNum, pageSize, refundStatusStr);
+
+
+        for (Order order1 : orderPageInfo.getList()) {
+            String orderId = order1.getOrderId();
+            if (orderItemService.selectByPrimaryOrderKey(orderId) != null) {
+                OrderItem orderItem = orderItemService.selectByPrimaryOrderKey(orderId);
+                order1.setItemTitle(orderItem.getTitle());
+                order1.setTotalFee(orderItem.getTotalFee());
+                order1.setNum(orderItem.getNum());
+                order1.setStatusStr(getStatusStrById(order1.getStatus()));
+                order1.setDateStr1(DateUtil.getDateStr(order1.getCreateTime()));
+                order1.setPaymentTypeStr(getRefundStatusStr(order1.getPaymentType()));
+
+                order1.setPaymentTypeStr(getPaymentTypeById(order1.getPaymentType()));
+//                order1.setRefundStatusStr(getRefundStatusStr(order1.getRefundStatus()));
+            }
+        }
+
+
+        model.addAttribute("pageInfo", orderPageInfo);
+
+
+        return "order/orderRefund";
     }
 
     @PostMapping("/user/orderDetails")

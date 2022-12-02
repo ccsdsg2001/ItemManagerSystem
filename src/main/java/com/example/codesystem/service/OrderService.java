@@ -35,4 +35,10 @@ public interface OrderService {
     PageInfo<Order> findByPage(Integer pageNum, Integer pageSize);
 
     PageInfo<Order> findByPagebyrefund(Integer pageNum, Integer pageSize, Order order);
+
+    PageInfo<Order> searchByrefundStatusStr(Integer pageNum, Integer pageSize,String refundStatusStr);
+
+
+
+
 }
