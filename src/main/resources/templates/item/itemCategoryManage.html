@@ -59,7 +59,7 @@
 
 		                    <div class="ibox-content" style="display: block;">
 
-		                    	<form th:action="@{itemCategory}" th:method="POST">
+		                    	<form th:action="@{searchByitemcategoryName}" >
 			                        <div class="row">
 		                            	<div class="col-sm-3 m-b-xs">
 		                            		<input name="name" value=""  th:value="${itemCategory.name}" placeholder="分类名称" class="form-control" type="text"/>
@@ -109,7 +109,7 @@
 										   		<td th:text="${ic.id}">Onions</td>
 										      	<td th:text="${ic.name}">Onions</td>
 
-										      	<td th:text="${ic.updatedStr}">Onions</td>
+										      	<td th:text="${ic.created}">Onions</td>
 										      	<td>
 										      		<a th:href="@{'itemCategoryEdit?id='+${ic.id}}" title="修改"><i class="fa fa-edit text-navy"></i></a>
 										      		&nbsp;&nbsp;&nbsp;&nbsp;

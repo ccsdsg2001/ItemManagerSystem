@@ -87,6 +87,16 @@ public class ItemCategoryImpl implements ItemCategoryService {
 
     }
 
+    @Override
+    public PageInfo<ItemCategory> ListByname(Integer pageNum, Integer pageSize, String name) {
+        log.info("pagenum:{}",pageNum);
+        log.info("pagesize:{}",pageNum);
+        Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
+        log.info("page:{}", objects);
+        List<ItemCategory> itemCategories = itemCategoryMapper.listByName(name);
+        PageInfo<ItemCategory> itemCategoryPageInfo = new PageInfo<>(itemCategories);
+        return itemCategoryPageInfo;
+    }
 
 
 }

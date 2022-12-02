@@ -33,4 +33,6 @@ public interface ItemCategoryService {
     int updateStatus(ItemCategory itemCategory);
 
     PageInfo<ItemCategory> findByPage(Integer pageNum, Integer pageSize);
+
+    PageInfo<ItemCategory> ListByname(Integer pageNum, Integer pageSize,String name);
 }

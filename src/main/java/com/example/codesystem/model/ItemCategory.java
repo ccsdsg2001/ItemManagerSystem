@@ -24,4 +24,5 @@ public class ItemCategory extends BaseObject{
     private String createdStr;
     private String updatedStr;
 
+
 }

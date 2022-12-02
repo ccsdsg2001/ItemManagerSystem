@@ -54,7 +54,7 @@ public class ItemCategoryController {
             i.setCreatedStr(DateUtil.getDateStr(i.getCreated()));
         }
 
-        PageUtil.getPageContent("itemCategory?name="+itemCategory.getName(),pageNum , pageSize, PageInfo.DEFAULT_NAVIGATE_PAGES);
+
         model.addAttribute("pageInfo",byPage);
         model.addAttribute("itemCategory", itemCategory);
         return "item/itemCategoryManage";
@@ -108,6 +108,18 @@ public class ItemCategoryController {
         itemCategoryService.delete(itemCategory);
         ResObject<Object> object = new ResObject<Object>(Constant.Code01, Constant.Msg01, null, null);
         return object;
+    }
+
+    @RequestMapping("/user/searchByitemcategoryName")
+    public String searchByname(ItemCategory itemCategory,@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                               @RequestParam(value = "pageSize",required = false,defaultValue = "5")Integer pageSize, Model model, String name){
+
+        PageInfo<ItemCategory> itemCategoryPageInfo = itemCategoryService.ListByname(pageNum, pageSize, name);
+
+        model.addAttribute("pageInfo", itemCategoryPageInfo);
+
+
+        return "item/itemCategoryManage";
     }
 
 }
