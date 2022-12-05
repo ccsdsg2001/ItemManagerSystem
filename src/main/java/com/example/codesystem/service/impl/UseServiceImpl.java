@@ -6,6 +6,8 @@ import com.example.codesystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * @author cc
  * @date 2022年11月01日 21:40
@@ -27,15 +29,19 @@ public class UseServiceImpl implements UserService {
         return userMapper.selectStatus(user);
     }
 
+
     @Override
-    public int resgisterNameIsnull(User user) {
-        return userMapper.selectIsname(user);
+    public int resgisterNameIsnull(String userName) {
+        return userMapper.selectIsname(userName);
     }
 
     @Override
-    public int register(User user) {
-        return userMapper.insert(user);
+    public int insert(String userName, String password, String email) {
+       return userMapper.insert(userName, password, email);
+
     }
+
+
 
     @Override
     public String selectPasswordByname(User user) {

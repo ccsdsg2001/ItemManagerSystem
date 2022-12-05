@@ -23,6 +23,11 @@ public class ItemServiceImpl implements ItemService {
     ItemMapper itemMapper;
 
     @Override
+    public List<Item> findBytitle(String title) {
+        return itemMapper.findByTitle(title);
+    }
+
+    @Override
     public Item findById(Item item) {
         return itemMapper.findById(item);
     }
@@ -94,6 +99,30 @@ public class ItemServiceImpl implements ItemService {
         PageInfo<Item> pageInfo = new PageInfo<>(list);
         return pageInfo;
 
+    }
+    @Override
+    public PageInfo<Item> findBytitle(Integer pageNum, Integer pageSize,String title) {
+        log.info("pagenum:{}",pageNum);
+        log.info("pagesize:{}",pageNum);
+        Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
+        log.info("page:{}", objects);
+        List<Item> byTitle = itemMapper.findByTitle(title);
+
+        PageInfo<Item> pageInfo = new PageInfo<>(byTitle);
+        return pageInfo;
+
+    }
+
+    @Override
+    public PageInfo<Item> findBysearch(Integer pageNum, Integer pageSize, String title, Integer cid) {
+        log.info("pagenum:{}",pageNum);
+        log.info("pagesize:{}",pageNum);
+        Page<Object> objects = PageHelper.startPage(pageNum, pageSize);
+        log.info("page:{}", objects);
+        List<Item> byTitle = itemMapper.searchByitem(title,cid);
+
+        PageInfo<Item> pageInfo = new PageInfo<>(byTitle);
+        return pageInfo;
     }
 
 

@@ -9,6 +9,8 @@ import java.util.List;
 @Mapper
 public interface ItemMapper {
 
+    List<Item> findByTitle(String title);
+
     Item findById(Item item);
 
     void delete(Item item);
@@ -22,6 +24,8 @@ public interface ItemMapper {
     int insert(Item item);
 
     int update (Item item);
+
+    List<Item> searchByitem(String title,int cid);
 
 
     List<Item> selectAll();

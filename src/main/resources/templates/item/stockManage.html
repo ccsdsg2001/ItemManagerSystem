@@ -54,17 +54,17 @@
                         <div class="ibox-content" style="display: block;">
 
 
-                            <form action="stockManage_0_0_0">
+                            <form th:action="@{searchBystockandtitle}">
                                 <div class="row">
                                     <div class="col-sm-3 m-b-xs">
                                         <input id="title" name="title" placeholder="商品标题" class="form-control" type="text" />
                                     </div>
-                                    <div class="col-sm-2 m-b-xs">
-                                        <input id="minNum" name="minNum" class="form-control" type="text"  placeholder="最小库存" />
-                                    </div>
-                                    <div class="col-sm-2 m-b-xs">
-                                        <input id="maxNum" name="maxNum"  class="form-control" type="text"  placeholder="最大库存"/>
-                                    </div>
+<!--                                    <div class="col-sm-2 m-b-xs">-->
+<!--                                        <input id="minNum" name="minNum" class="form-control" type="text"  placeholder="最小库存" />-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-2 m-b-xs">-->
+<!--                                        <input id="maxNum" name="maxNum"  class="form-control" type="text"  placeholder="最大库存"/>-->
+<!--                                    </div>-->
                                     <div class="col-sm-2 m-b-xs">
                                         <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>搜索</strong></button>
                                     </div>

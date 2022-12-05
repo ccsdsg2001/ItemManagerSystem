@@ -3,14 +3,17 @@ package com.example.codesystem.service;
 
 import com.example.codesystem.model.User;
 
+import java.util.Date;
+
 public interface UserService {
     User login(User user);//登录
     int logout(User user);//退出
 
 
-    int resgisterNameIsnull(User user);//检查用户名是否存在
-    int register(User user);//注册
 
+    int resgisterNameIsnull(String userName);
+
+    int insert(String userName, String password, String email);//注册用户
     String selectPasswordByname(User user);//通过用户名查找密码
 
 

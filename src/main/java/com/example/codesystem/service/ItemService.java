@@ -10,6 +10,9 @@ import java.util.List;
 public interface ItemService {
 
 
+
+    List<Item> findBytitle(String title);
+
     Item findById(Item item);
 
     void delete(Item item);
@@ -31,4 +34,8 @@ public interface ItemService {
     PageInfo<Item> findByPage(Integer pageNum, Integer pageSize);
 
     PageInfo<Item> findByPagetest(Integer pageNum, Integer pageSize, Item item);
+
+    PageInfo<Item> findBytitle(Integer pageNum, Integer pageSize, String title);
+
+    PageInfo<Item> findBysearch(Integer pageNum, Integer pageSize, String title,Integer cid);
 }

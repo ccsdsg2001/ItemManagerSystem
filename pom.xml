@@ -30,6 +30,8 @@
     <dependencies>
 
 
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -156,10 +158,7 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -194,6 +193,18 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
+
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
         </plugins>
+
+
+
+
     </build>
 </project>

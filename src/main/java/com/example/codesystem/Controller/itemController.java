@@ -65,33 +65,45 @@ public class itemController {
     ItemCategoryService itemCategoryService;
 
     @RequestMapping("/user/itemManage")
-    public String itemManage(ItemCategory itemCategory, @RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
-                             @RequestParam(value = "pageSize",required = false,defaultValue = "20")Integer pageSize, Model model, String name, Item item){
-
-
-
-        itemList=itemService.list(item);
-        for (Item i : itemList) {
-            i.setUpdatedStr(DateUtil.getDateStr(i.getUpdated()));
-        }
-        List<ItemCategory> itemCategoryList = itemCategoryService.list1();
+    public String itemManage(ItemCategory itemCategory,
+                             @RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                             @RequestParam(value = "pageSize",required = false,defaultValue = "20")Integer pageSize,
+                             Model model, String name, Item item){
 
         PageInfo<Item> byPage = itemService.findByPage(pageNum, pageSize);
-//        List<Item> list = byPage.getList();
-//        for (Item i : list) {
-//            i.setUpdatedStr(DateUtil.getDateStr(i.getUpdated()));
-//        }
 
-        PageInfo<Item> byPagetest = itemService.findByPagetest(pageNum, pageSize, item);
-        List<Item> list = byPagetest.getList();
-        for (Item i : list) {
+
+//        PageInfo<Item> byPagetest = itemService.findByPagetest(pageNum, pageSize, item);
+        for (Item i : byPage.getList()) {
             i.setUpdatedStr(DateUtil.getDateStr(i.getUpdated()));
         }
 
+        ItemCategory itemCategory1 = new ItemCategory();
+        itemCategory1.setStart(0);
+        itemCategory1.setEnd(Integer.MAX_VALUE);
+        List<ItemCategory> itemCategoryList = itemCategoryService.list(itemCategory1);
+        Integer minPrice=item.getMinPrice();
+        Integer maxPrice=item.getMaxPrice();
+
+
+        model.addAttribute("itemCategoryList", itemCategoryList);
         model.addAttribute("pageInfo",byPage);
         model.addAttribute("item", item);
 //        model.addAttribute("pageInfo", itemList);
-        model.addAttribute("itemCategoryList", itemCategoryList);
+        return "item/itemManage";
+
+    }
+
+
+    @RequestMapping("/user/itemManageSearch")
+    public String itemManageSearch(ItemCategory itemCategory,
+                                   @RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                                   @RequestParam(value = "pageSize",required = false,defaultValue = "20")Integer pageSize,
+                                   Model model, String title, Item item,Integer cid ){
+
+        PageInfo<Item> bysearch = itemService.findBysearch(pageNum, pageSize, title, cid);
+        model.addAttribute("pageInfo", bysearch);
+
 
         return "item/itemManage";
     }

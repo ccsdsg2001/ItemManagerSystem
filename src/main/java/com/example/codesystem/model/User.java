@@ -9,11 +9,7 @@ import java.util.Date;
  * @date 2022年10月30日 20:36
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@EqualsAndHashCode
-public class User {
+public class User extends BaseObject {
     private int id;
     private String userName;
     private String password;

@@ -25,7 +25,7 @@
         </select>
 
         <select id="selectAll" resultMap="BaseResultMap">
-            SELECT * from tb_item
+            SELECT i.* , t.name categoryName from tb_item i left join tb_category t ON i.cid = t.id WHERE i.status = 1
         </select>
 
         <select id="list" resultMap="BaseResultMap" parameterType="com.example.codesystem.model.Item">
@@ -71,11 +71,22 @@
                 ORDER BY price
             </if>
         </select>
+    <select id="findByTitle" resultType="com.example.codesystem.model.Item">
+        SELECT * FROM tb_item WHERE title LIKE concat('%', #{title, jdbcType=VARCHAR}, '%')  ORDER BY updated desc
+    </select>
+    <select id="searchByitem" resultType="com.example.codesystem.model.Item">
+        SELECT i.* , t.name as categoryName FROM tb_item i LEFT JOIN tb_category t ON i.cid = t.id WHERE i.status = 1
+        <if test="title != null">
+            AND title LIKE concat('%', #{title, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="cid != 0">
+            AND cid = #{cid, jdbcType=INTEGER}
+        </if>
+        ORDER BY updated desc
+    </select>
 
 
-
-
-        <insert id="insert" parameterType="com.example.codesystem.model.Item" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.example.codesystem.model.Item" useGeneratedKeys="true" keyProperty="id">
             INSERT INTO tb_item (id, title, sell_point, price, num, barcode, image, cid, status, created, updated)
                 VALUE (
                        #{id, jdbcType=INTEGER},

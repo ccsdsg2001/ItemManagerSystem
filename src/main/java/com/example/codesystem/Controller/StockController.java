@@ -29,4 +29,16 @@ public class StockController {
     }
 
 
+    @RequestMapping("/user/searchBystockandtitle")
+    public String searchBystockandtitle(@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                                        @RequestParam(value = "pageSize",required = false,defaultValue = "15")Integer pageSize
+                                        ,Model model,String title){
+        PageInfo<Item> bytitle = itemService.findBytitle(pageNum, pageSize, title);
+        model.addAttribute("pageInfo", bytitle);
+
+
+        return "item/stockManage";
+    }
+
+
 }

@@ -9,9 +9,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
@@ -75,18 +73,16 @@ public class UserController {
         return "register";
     }
 
-    @PostMapping("/user/register")
-    public String registrPost(User user,Model model){
+    @RequestMapping("/user/register1")
+    public String registrPost(User user, Model model, @RequestParam("name") String userName, String password, String email){
         System.out.println("用户名"+user.getUserName());
 
         try {
-            userService.resgisterNameIsnull(user);
+            userService.resgisterNameIsnull(userName);
             model.addAttribute("error", "该用户已经存在!");
         } catch (Exception e) {
-             Date date = new Date();
-            user.setAddDate(date);
-            user.setUpdateDate(date);
-            userService.register(user);
+
+            userService.insert(userName,password,email);
             System.out.println("注册成功");
             model.addAttribute("error","注册成功");
             return "login";
