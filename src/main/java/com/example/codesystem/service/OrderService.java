@@ -38,7 +38,7 @@ public interface OrderService {
 
     PageInfo<Order> searchByrefundStatusStr(Integer pageNum, Integer pageSize,String refundStatusStr);
 
-
+    PageInfo<Order> listByPaymentTypeAndStatus(Integer pageNum,Integer pageSize,Integer paymenType,Integer status);
 
 
 }

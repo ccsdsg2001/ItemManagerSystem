@@ -58,7 +58,9 @@
                             </div>
                         </div>
                         <div class="ibox-content" style="display: block;">
-                            <form action="orderManage_0_0_0">
+
+
+                            <form th:action="@{ordermanagersearch}" >
                                 <div class="row">
                                     <div class="col-sm-2 m-b-xs">
                                         <select name="paymentType" id="paymentType" class="form-control">
@@ -78,13 +80,13 @@
                                             <option value="6">交易关闭</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2 m-b-xs">
-                                        <input id="minOrderTimeStr" name="minOrderTimeStr" class="form-control" type="text"  placeholder="订单最早时间" />
-                                    </div>
-                                    <div class="col-sm-2 m-b-xs">
+<!--                                    <div class="col-sm-2 m-b-xs">-->
+<!--                                        <input id="minOrderTimeStr" name="minOrderTimeStr" class="form-control" type="text"  placeholder="订单最早时间" />-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-2 m-b-xs">-->
 
-                                        <input id="maxOrderTimeStr" name="maxOrderTimeStr"  class="form-control" type="text" placeholder="订单最晚时间"/>
-                                    </div>
+<!--                                        <input id="maxOrderTimeStr" name="maxOrderTimeStr"  class="form-control" type="text" placeholder="订单最晚时间"/>-->
+<!--                                    </div>-->
                                     <div class="col-sm-2 m-b-xs">
                                         <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>搜索</strong></button>
                                     </div>
@@ -93,6 +95,9 @@
                                     </div>
                                 </div>
                             </form>
+
+
+
                             <div class="row">
                                 <div class="col-sm-6 m-b-xs">
                                  

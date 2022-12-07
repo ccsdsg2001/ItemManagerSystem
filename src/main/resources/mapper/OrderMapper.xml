@@ -145,6 +145,19 @@
         from tb_order
         WHERE refundStatusStr = #{refundStatusStr,jdbcType=INTEGER}
     </select>
+    <select id="listByPaymentTypeAndStatus" resultType="com.example.codesystem.model.Order">
+        select order_id, payment, payment_type, post_fee, status, create_time, update_time,
+        payment_time, consign_time, end_time, close_time, shipping_name, shipping_code, user_id,
+        buyer_message, buyer_nick, buyer_rate
+        from tb_order where order_id is not null
+        <if test="paymentType != null and paymentType != 0">
+            AND payment_type = #{paymentType, jdbcType=INTEGER}
+        </if>
+        <if test="status != null and status != 0">
+            AND status = #{status, jdbcType=INTEGER}
+        </if>
+
+    </select>
 
     <resultMap id="monthMap" type="com.example.codesystem.model.Month">
 

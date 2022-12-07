@@ -86,6 +86,29 @@ public class OrderController {
     }
 
 
+    @RequestMapping("/user/ordermanagersearch")
+    public String ordermanagersearch(@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                                     @RequestParam(value = "pageSize",required = false,defaultValue = "20")Integer pageSize, Model model, Integer paymentType,Integer status){
+
+        PageInfo<Order> orderPageInfo = orderService.listByPaymentTypeAndStatus(pageNum, pageSize, paymentType, status);
+        for (Order order1 : orderPageInfo.getList()) {
+            String orderId = order1.getOrderId();
+            if (orderItemService.selectByPrimaryOrderKey(orderId) != null) {
+                OrderItem orderItem = orderItemService.selectByPrimaryOrderKey(orderId);
+                order1.setItemTitle(orderItem.getTitle());
+                order1.setTotalFee(orderItem.getTotalFee());
+                order1.setNum(orderItem.getNum());
+                order1.setStatusStr(getStatusStrById(order1.getStatus()));
+                order1.setDateStr1(DateUtil.getDateStr(order1.getCreateTime()));
+                order1.setPaymentTypeStr(getPaymentTypeById(order1.getPaymentType()));
+            }
+        }//遍历数据
+        model.addAttribute("pageInfo",orderPageInfo);
+
+
+        return "order/orderManage";
+    }
+
 
 
     @RequestMapping("/user/orderRefund")

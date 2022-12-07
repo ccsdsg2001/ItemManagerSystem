@@ -35,4 +35,6 @@ public interface OrderMapper {
     Integer selectDayOrderNum(Order order);
 
     Integer updateByPrimaryKey(Order record);
+
+    List<Order> listByPaymentTypeAndStatus(Integer paymentType,Integer status);
 }
