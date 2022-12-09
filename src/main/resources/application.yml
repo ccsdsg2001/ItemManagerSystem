@@ -4,7 +4,11 @@ spring:
     url: jdbc:mysql://localhost:3306/jesper?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
     password: root
-#
+    tomcat:
+      remove-abandoned: true
+      remove-abandoned-timeout: 600
+      log-abandoned: true
+  #
 #  忘记密码时侯的邮箱验证
   mail:
     host: smtp.qq.com
@@ -22,19 +26,17 @@ spring:
     mode: HTML5
     prefix: classpath:/templates/
   redis:
-    host: localhost
+    host: 127.0.0.1
     port: 6370
-    timeout: 10
+    timeout: 100
     jedis:
       pool:
-        max-active: 1000
-        max-idle: 500
-        max-wait: 500
+        max-active: 10000
+        max-idle: 5000
+        max-wait: 5000
   data:
     mongodb:
       uri: mongodb://localhost:27017/springboot-db
-
-
 
 
 mybatis:
@@ -49,3 +51,4 @@ pagehelper:
   helper-dialect: mysql
 server:
   port: 9999
+
